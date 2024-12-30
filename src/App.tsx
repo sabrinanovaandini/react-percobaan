@@ -31,7 +31,7 @@ function App() {
 
           handleChange(5, "Ari")
           }> 
-          Pencet
+          Simpan
         </button>
         
         <p>
