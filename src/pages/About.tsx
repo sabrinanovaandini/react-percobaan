@@ -27,6 +27,7 @@ export default function About(){
             </button>
         </div>
 
+        <Link to="/home" className="navbar-link">page 1</Link>
         </>
         
     )

@@ -1,7 +1,7 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0; /* Hilangkan padding agar lebar penuh */
   text-align: center;
 }
 
@@ -41,41 +41,159 @@
   color: #888;
 }
 
+
+/* NAVBAR */
+
 .navbar {
-  padding: 10px;
-  /* background-color: #f0f0f0; */
-  margin-bottom: 10px;
-  /* width: 100%;
-  position: fixed; */
-  top: 0;
+  width: 100%; /* Pastikan navbar memenuhi lebar root */
+  display: flex;
+  align-items: center;
+  /* background-color: #007bff; */
+  color: white;
+  flex-direction: column;
+  box-sizing: border-box; /* Pastikan padding tidak memengaruhi lebar */
+}
+
+.navbar-title {
+  background-color: white;
+  width: 100%; /* Pastikan lebar title memenuhi navbar */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 60px
+  padding: 0 32px; /* Tambahkan padding di kiri dan kanan */
+  box-sizing: border-box; /* Pastikan padding tidak memengaruhi ukuran elemen */
 }
 
-.navbar h1 {
-  margin: 0;
-  font-size: 20px;
-}
-
-.navbar-link {
-  /* margin-right: 10px; */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   text-decoration: none;
-  color: #1a1a1a;
   font-weight: bold;
+  color: #213555;
+  font-size: 8px;
 }
 
-.content {
-  /* margin-top: 60px; */
-  padding: 40px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  width: 50%;
-  margin: 50px auto 0;
-  text-align: center;
+.navbar-logo img {
+  width: 48px;
+  height: 48px;
 }
 
-.content h1 {
-  color: #1a1a1a;
+.search {
+  background-color: white;
+  border: 1px solid #888;
+  border-radius: 16px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 256px;
+  height: 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.logo-search {
+  color: #ccc;
+  width: 32px;
+  height: 100%;
+  left: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
+.search-bar {
+  background-color: transparent;
+  border: 0;
+  border-radius: 2px;
+  width: 100%;
+  height: 16px;
+  display: block;
+  padding: 8px 16px 8px 32px;
+  font-size: 12px;
+  color: #666;
+  outline: none; /* Hilangkan outline default */
+  transition: box-shadow 0.3s ease; /* Tambahkan transisi untuk efek fokus */
+  /* position: relative; */
+}
+
+.navbar-menu {
+  background-color: #213555;
+  width: 100%; /* Pastikan menu memenuhi navbar */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.navbar-toggle {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0px 24px;
+  height: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-radius: 8px;
+}
+
+.navbar-dropdown {
+  position: relative;
+  height: 100%;
+  align-items: center;
+}
+
+.navbar-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #213555;
+  color: black;
+  padding: 0; /* Sesuaikan padding untuk menu */
+  border-radius: 0px 0px 8px 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block; /* Tetap gunakan block untuk memastikan animasi terlihat */
+  visibility: hidden; /* Awalnya tidak terlihat */
+  opacity: 0; /* Awalnya transparan */
+  transform: translateY(-10px); /* Awalnya sedikit di atas */
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Tambahkan transisi untuk visibility */
+  width: auto; /* Lebar menyesuaikan dengan konten di dalamnya */
+  white-space: nowrap; /* Menghindari pemotongan teks jika panjang */
+  text-align: left;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-menu {
+  visibility: visible; /* Menu menjadi terlihat */
+  opacity: 1; /* Tampilkan menu */
+  transform: translateY(0); /* Geser ke posisi normal */
+}
+
+.navbar-dropdown-menu a {
+  display: block;
+  padding: 8px 24px;
+  height: 32px;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-dropdown-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+

@@ -18,15 +18,6 @@ export default function Home(){
 
         <Navbar/>
 
-        <div className="content">
-            <h1>{count}</h1>
-            <h1>{name}</h1>
-
-            <button onClick={()=> handleChange(4, "Sabrina")}>
-                Change
-            </button>
-        </div>
-
         </>
     )
 }
