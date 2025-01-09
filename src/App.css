@@ -210,7 +210,7 @@
 }
 
 .carousel-slide {
-  background-color: chocolate=;
+  background-color: chocolate;
 }
 
 .carousel-item {
@@ -234,4 +234,43 @@
 .carousel-content p {
   font-size: 24px;
   line-height: 1.1;
+}
+
+
+/* footer */
+footer {
+  background-color: #213555;
+  padding: 32px 64px;
+}
+
+.footer-container {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-content1 {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 24px;
+  padding: 0 12px;
+}
+
+.footer-title {
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer-contact {
+  font-size: 16px;
+  line-height: normal;
+  /* margin: ; */
+}
+
+.copyright {
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
 }

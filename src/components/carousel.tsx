@@ -34,7 +34,7 @@ export default function Carousel(){
                     <li data-bs-target="#hero-carousel" data-bs-slide-to="2" className="active" aria-current="true"></li>
                 </ol>
 
-                <FontAwesomeIcon icon="fas fa-window-minimize" />
+                <FontAwesomeIcon icon="window-minimize" />
 
 
             </div>
