@@ -1,25 +1,23 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 import { Link, useLocation, } from "react-router-dom";
 
 export default function Navbar(){
 
     const router= useLocation()
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-    }
     console.log(location.pathname)
     return (
         <nav className="navbar">
             <div className="navbar-title">
+                <div className="navbar-logo">
+                <img src="http://smkn2mgl.sch.id/media_library/images/4cf9743116d33ca628f4238601357f7f.png" alt="" />
                 <Link to="/home" className="navbar-logo">
-                    <img src="https://smkn2mgl.sch.id/media_library/images/4cf9743116d33ca628f4238601357f7f.png" alt="" />
+                    
                     <h1>SMKN 2 MAGELANG</h1>
                 </Link>
+                </div>
+                
 
                 <div className="search">
                     <div className="logo-search">
