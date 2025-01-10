@@ -1,3 +1,5 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+
 #root {
   /* max-width: 1280px; */
   margin: 0 auto;
@@ -246,6 +248,7 @@ footer {
 .footer-container {
   display: flex;
   gap: 24px;
+  padding-bottom: 32px;
 }
 
 .footer-content1 {
@@ -255,22 +258,58 @@ footer {
   text-align: left;
   margin-top: 24px;
   padding: 0 12px;
+  width: 384px;
 }
 
 .footer-title {
   text-decoration: none;
   font-size: 24px;
   font-weight: bold;
+  color: white;
 }
 
 .footer-contact {
   font-size: 16px;
   line-height: normal;
-  /* margin: ; */
+  color: white;
 }
 
+.footer-content2 {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 24px;
+  padding: 0 12px;
+  width: 148px;
+}
+
+.footer-sub-title {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+.footer-ct {
+
+}
+
+.medsos {
+  display: flex;
+  margin: 16px 0;
+  color: white;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.icon-medsos {
+  
+}
+
+
 .copyright {
-  padding: 16px 0;
+  padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }

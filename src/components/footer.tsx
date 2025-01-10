@@ -1,3 +1,6 @@
+// import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faInstagram, faYoutube, faTwitter, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, useLocation } from "react-router-dom"
 
 export default function Footer(){
@@ -10,36 +13,72 @@ export default function Footer(){
                 <div className="footer-content1">
                     <Link to="/home" className="footer-title">SMKN 2 MAGELANG</Link>
                     <div className="footer-contact">
-                        <p>Jln. Ahmad Yani, Magelang, Jawa Tengah</p>
+                        <p>Jalan Jend. Ahmad Yani 135 A, Kramat Selatan, Magelang Utara, 56115 Magelang, Jawa Tengah, (0293) 362577</p>
                         <p>
-                            <strong>Telp:</strong>
-                            <span>083783763</span>
+                            <strong>Telp : </strong>
+                            <span>0293 362577</span>
                         </p>
                         <p>
-                            <strong>Email:</strong>
-                            <span>@gmail.com</span>
+                            <strong>Fax : </strong>
+                            <span>0293 313172</span>
+                        </p>
+                        <p>
+                            <strong>Email : </strong>
+                            <span>smkn2magelang@yahoo.com</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="footer-content1">
-                    <Link to="/home" className="footer-title">SMKN 2 MAGELANG</Link>
-                    <div className="footer-contact">
-                        <p>Jln. Ahmad Yani, Magelang, Jawa Tengah</p>
-                        <p>
-                            <strong>Telp:</strong>
-                            <span>083783763</span>
-                        </p>
-                        <p>
-                            <strong>Email:</strong>
-                            <span>@gmail.com</span>
-                        </p>
+                <div className="footer-content2">
+                    <Link to="/home" className="footer-sub-title">Link Terkait</Link>
+                    <div className="footer-ct">
+                        <Link to="/home" className="medsos">BKK</Link>
+                        <Link to="/home" className="medsos">LSP P1</Link>
+                        <Link to="/home" className="medsos">Prestasi</Link>
+                        <Link to="/home" className="medsos">Kegiatan Skanida</Link>
                     </div>
                 </div>
+
+                <div className="footer-content2">
+                    <Link to="/home" className="footer-sub-title">Sosial Media</Link>
+                    <div className="footer-ct">
+                        <Link to="/home" className="medsos">
+                            <div className="icon-medsos"><FontAwesomeIcon icon={faInstagram}/></div>
+                            Instagram
+                        </Link>
+                        <Link to="/home" className="medsos">
+                            <div className="icon-medsos"><FontAwesomeIcon icon={faYoutube}/></div>
+                            Youtube
+                        </Link>
+                        <Link to="/home" className="medsos">
+                            <div className="icon-medsos"><FontAwesomeIcon icon={faTwitter}/></div>
+                            Twitter
+                        </Link>
+                        <Link to="/home" className="medsos">
+                            <div className="icon-medsos"><FontAwesomeIcon icon={faFacebook}/></div>
+                            Facebook
+                        </Link>
+                        <Link to="/home" className="medsos">
+                            <div className="icon-medsos"><FontAwesomeIcon icon={faTiktok}/></div>
+                            Tiktok
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="footer-content2">
+                    <Link to="/home" className="footer-sub-title">Link Terkait</Link>
+                    <div className="footer-ct">
+                        <Link to="/home" className="medsos">BKK</Link>
+                        <Link to="/home" className="medsos">LSP P1</Link>
+                        <Link to="/home" className="medsos">Prestasi</Link>
+                        <Link to="/home" className="medsos">Kegiatan Skanida</Link>
+                    </div>
+                </div>
+                
             </div>
 
             <div className="copyright">
-                <p>@ copyright 2025 SMKN 2 Magelang</p>
+                <p>&copy; Copyright 2025 SMKN 2 Magelang</p>
             </div>
         </footer>
     )

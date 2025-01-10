@@ -6,14 +6,13 @@ export default function Navbar(){
 
     const router= useLocation()
 
-    console.log(location.pathname)
+    console.log(router.pathname)
     return (
         <nav className="navbar">
             <div className="navbar-title">
                 <div className="navbar-logo">
                 <img src="http://smkn2mgl.sch.id/media_library/images/4cf9743116d33ca628f4238601357f7f.png" alt="" />
                 <Link to="/home" className="navbar-logo">
-                    
                     <h1>SMKN 2 MAGELANG</h1>
                 </Link>
                 </div>
