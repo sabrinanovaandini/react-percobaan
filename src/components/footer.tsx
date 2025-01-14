@@ -36,12 +36,24 @@ export default function Footer(){
                         <Link to="/home" className="medsos">LSP P1</Link>
                         <Link to="/home" className="medsos">Prestasi</Link>
                         <Link to="/home" className="medsos">Kegiatan Skanida</Link>
+                        <Link to="/home" className="medsos">Kurikulum</Link>
+                    </div>
+                </div>
+
+                <div className="footer-content2">
+                    <Link to="/home" className="footer-sub-title">Link Terkait</Link>
+                    <div className="footer-ct">
+                        <Link to="/home" className="medsos">Kelas Industri</Link>
+                        <Link to="/home" className="medsos">Kegiatan Adiwiyata</Link>
+                        <Link to="/home" className="medsos">Organisasi</Link>
+                        <Link to="/home" className="medsos">Ekstrakurikuler</Link>
+                        <Link to="/home" className="medsos">PPDB SMK</Link>
                     </div>
                 </div>
 
                 <div className="footer-content2">
                     <Link to="/home" className="footer-sub-title">Sosial Media</Link>
-                    <div className="footer-ct">
+                    <div>
                         <Link to="/home" className="medsos">
                             <div className="icon-medsos"><FontAwesomeIcon icon={faInstagram}/></div>
                             Instagram
@@ -62,16 +74,6 @@ export default function Footer(){
                             <div className="icon-medsos"><FontAwesomeIcon icon={faTiktok}/></div>
                             Tiktok
                         </Link>
-                    </div>
-                </div>
-
-                <div className="footer-content2">
-                    <Link to="/home" className="footer-sub-title">Link Terkait</Link>
-                    <div className="footer-ct">
-                        <Link to="/home" className="medsos">BKK</Link>
-                        <Link to="/home" className="medsos">LSP P1</Link>
-                        <Link to="/home" className="medsos">Prestasi</Link>
-                        <Link to="/home" className="medsos">Kegiatan Skanida</Link>
                     </div>
                 </div>
                 

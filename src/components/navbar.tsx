@@ -6,7 +6,7 @@ export default function Navbar(){
 
     const router= useLocation()
 
-    console.log(router.pathname)
+    console.log(location.pathname)
     return (
         <nav className="navbar">
             <div className="navbar-title">
@@ -29,7 +29,7 @@ export default function Navbar(){
             <div className="navbar-menu">
                 <Link to="/home" className="navbar-toggle">Beranda</Link>
 
-                <Link to="/home" className="navbar-toggle">PPDB</Link>
+                <Link to="/about" className="navbar-toggle">PPDB</Link>
 
                 <Link to="/home" className="navbar-toggle">Berita</Link>
 

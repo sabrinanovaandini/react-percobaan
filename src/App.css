@@ -35,22 +35,22 @@
   }
 }
 
-.card {
+/* .card {
   padding: 2em;
-}
+} */
 
 .read-the-docs {
   color: #888;
 }
 
 
+
 /* NAVBAR */
 
 .navbar {
-  width: 100%; /* Pastikan navbar memenuhi lebar root */
+  width: 100%;
   display: flex;
   align-items: center;
-  /* background-color: #007bff; */
   color: white;
   flex-direction: column;
   box-sizing: border-box; /* Pastikan padding tidak memengaruhi lebar */
@@ -58,7 +58,7 @@
 
 .navbar-title {
   background-color: white;
-  width: 100%; /* Pastikan lebar title memenuhi navbar */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,7 +73,7 @@
   text-decoration: none;
   font-weight: bold;
   color: #213555;
-  font-size: 8px;
+  font-size: 8px; /*noted*/
 }
 
 .navbar-logo img {
@@ -82,7 +82,7 @@
 }
 
 .navbar-logo h1 {
-  font-size: 3.2em;
+  font-size: 3.2em; /*noted*/
   line-height: 1.1;
 }
 
@@ -121,14 +121,14 @@
   padding: 8px 16px 8px 32px;
   font-size: 12px;
   color: #666;
-  outline: none; /* Hilangkan outline default */
-  transition: box-shadow 0.3s ease; /* Tambahkan transisi untuk efek fokus */
+  outline: none; 
+  /* transition: box-shadow 0.3s ease; */
   /* position: relative; */
 }
 
 .navbar-menu {
   background-color: #213555;
-  width: 100%; /* Pastikan menu memenuhi navbar */
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;
@@ -139,7 +139,7 @@
 .navbar-toggle {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1rem; /*noted*/
   padding: 0px 24px;
   height: 100%;
   border-radius: 8px;
@@ -205,27 +205,27 @@
 }
 
 
+
 /* carousel */
 
 .carousel {
-  background-color: aquamarine;
+
 }
 
 .carousel-slide {
-  background-color: chocolate;
+
 }
 
 .carousel-item {
-  background-color: #666;
+
 }
 
 .carousel-content {
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  padding: 32px;
 }
 
 .carousel-content h1 {
@@ -239,6 +239,59 @@
 }
 
 
+/* Card News */
+.card-news {
+  background-color: white;
+  color: black;
+  padding: 32px 64px;
+}
+
+.card-content {
+  width: 400px;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-img img {
+  width: 100%;
+  height: auto; /*200px*/
+  object-fit: cover;
+  display: block;
+}
+
+.card-caption {
+  padding: 16px 32px;
+  text-align: justify;
+}
+
+.card-caption h3 {
+  margin: 8px 0;
+  font-size: 1.25rem;
+}
+
+.card-info {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0px;
+  font-size: 0.875rem; /*noted*/
+  color: #666;
+}
+
+.card-caption p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.btn-card {
+  margin: 8px 0;
+  
+}
+
+
+
 /* footer */
 footer {
   background-color: #213555;
@@ -247,7 +300,7 @@ footer {
 
 .footer-container {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   padding-bottom: 32px;
 }
 
@@ -258,7 +311,7 @@ footer {
   text-align: left;
   margin-top: 24px;
   padding: 0 12px;
-  width: 384px;
+  width: 408px;
 }
 
 .footer-title {
@@ -281,7 +334,7 @@ footer {
   text-align: left;
   margin-top: 24px;
   padding: 0 12px;
-  width: 148px;
+  width: 184px;
 }
 
 .footer-sub-title {
@@ -291,20 +344,18 @@ footer {
   color: white;
 }
 
-.footer-ct {
-
-}
-
 .medsos {
   display: flex;
   margin: 16px 0;
   color: white;
+  font-size: 16px;
   gap: 16px;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.icon-medsos {
-  
+.medsos:hover {
+  color: #f39c12;
 }
 
 

@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #c26d0c;
+  /* background-color: #c26d0c; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -65,4 +65,34 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+
+.btn {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-card {
+  background-color: #213555;
+  text-align: center;
+  padding: 8px 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+  color: #213555;
+}
+
+.btn-card:hover {
+  /* transform: scale(1.1); */
+  background: transparent;
+  color: #213555;
+  /* box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); */
 }
