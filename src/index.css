@@ -68,31 +68,44 @@ button:focus-visible {
 }
 
 
+
+
+
+
+.btn-card {
+  padding: 7px 0px;
+  margin: 16px 0;
+  box-sizing: border-box;
+  text-align: start;
+  font-size: 16px;
+}
+
+
 .btn {
   text-decoration: none;
   color: white;
-}
-
-.btn-card {
-  background-color: #213555;
-  text-align: center;
+  background-color: #747bff;
   padding: 8px 16px;
-  margin: 16px 0;
   border-radius: 8px;
   box-sizing: border-box;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-size: 16px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
 }
-
 .btn:hover {
   color: #213555;
+  border: 1px #213555 solid;
+  background: transparent;
 }
 
-.btn-card:hover {
-  /* transform: scale(1.1); */
-  background: transparent;
+.btn-sm {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  background-color: #747bff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.btn-sm:hover {
   color: #213555;
-  /* box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5); */
+  border: 1px #213555 solid;
+  background: transparent;
 }

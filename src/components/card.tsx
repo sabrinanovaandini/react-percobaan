@@ -1,9 +1,26 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { Link, useLocation, } from "react-router-dom";
 
 export default function Card(){
     const router= useLocation()
+
+    const [selectedCategory, setSelectedCategory] = useState("Semua");
+    
+    // Data berita yang bisa difilter (misalnya)
+    const newsData = [
+        { id: 1, title: "HUT SMKN 2 Magelang ke-999 Tahun 9999/10000", category: "Kegiatan Skanida", date: "Senin, 13 Januari 2025", time: "12.01", author: "Oleh Jurnalis", content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est. Lorem ipsum dolor sit amet, consectetur adipisicing elit..." },
+        { id: 2, title: "Juara 1 Mancing diraih Oleh Sabrina Bunga Dengan Mendapatkan Ikan Batu", category: "Prestasi", date: "Selasa, 14 Januari 2025", time: "14.00", author: "Oleh Jurnalis", content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est. consectetur adipisicing elit..." },
+        { id: 3, title: "Kelas Industri Akuntansi Kelas 12", category: "AKL", date: "Rabu, 15 Januari 2025", time: "10.30", author: "Oleh Jurnalis", content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit sequi pariatur omnis commodi libero maiores debitis voluptate, et nihil inventore. Debitis numquam voluptatibus iusto nesciunt reprehenderit quasi cumque dignissimos est. Lorem ipsum dolor sit amet, consectetur adipisicing elit..." },
+        // Tambahkan berita lainnya di sini
+    ];
+
+    // Filter berita berdasarkan kategori yang dipilih
+    const filteredNews = selectedCategory === "Semua" 
+        ? newsData 
+        : newsData.filter(news => news.category === selectedCategory);
+
 
     console.log(location.pathname)
     return (
@@ -12,31 +29,80 @@ export default function Card(){
                 <div className="card-title">
                     <h1>Berita Terbaru</h1>
                 </div>
+
                 <div className="card-filter">
-                    Semua
-                    Kegiatan Skanida 
-                    Prestasi 
-                    AKL 
-                    MPLB 
-                    PPLG 
-                    PM 
-                    BKK 
-                    LSP P1
+                    <ul className="filter-items">
+                        <li
+                            onClick={() => setSelectedCategory("Semua")}
+                            className={selectedCategory === "Semua" ? "active" : ""}
+                        >
+                            Semua
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("Kegiatan Skanida")}
+                            className={selectedCategory === "Kegiatan Skanida" ? "active" : ""}
+                        >
+                            Kegiatan Skanida
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("News Skanida")}
+                            className={selectedCategory === "News Skanida" ? "active" : ""}
+                        >
+                            News Skanida
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("Prestasi")}
+                            className={selectedCategory === "Prestasi" ? "active" : ""}
+                        >
+                            Prestasi
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("AKL")}
+                            className={selectedCategory === "AKL" ? "active" : ""}
+                        >
+                            AKL
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("MPLB")}
+                            className={selectedCategory === "MPLB" ? "active" : ""}
+                        >
+                            MPLB
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("PPLG")}
+                            className={selectedCategory === "PPLG" ? "active" : ""}
+                        >
+                            PPLG
+                        </li>
+                        <li
+                            onClick={() => setSelectedCategory("PM")}
+                            className={selectedCategory === "PM" ? "active" : ""}
+                        >
+                            PM
+                        </li>
+                    </ul>
+                    <Link to="/about" className="btn-sm">Lihat Semua</Link>
                 </div>
-                <div className="card-content">
-                    <div className="card-img"><img src="public/images1.jpeg" alt=""/></div>
-                    <div className="card-caption">
-                        <h3>Judul Berita</h3>
-                        <div className="card-info">
-                            <p>Senin, 13 Januari 2025</p>
-                            <p>12.01</p>
-                            <p>|</p>
-                            <p>Oleh jurnalis</p>
+
+                <div className="card-card">
+                    {filteredNews.map(news => (
+                        <div className="card-content" key={news.id}>
+                            <div className="card-img"><img src="public/images1.jpeg" alt=""/></div>
+                            <div className="card-caption">
+                                <h3>{news.title}</h3>
+                                <div className="card-info">
+                                    <p>{news.date}</p>
+                                    <p>{news.time}</p>
+                                    <p>|</p>
+                                    <p>{news.author}</p>
+                                </div>
+                                <p>{news.content}</p>
+                                <div className="btn-card"><Link to="/about" className="btn">Baca Selengkapnya</Link></div>
+                            </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus placeat amet sequi inventore modi eos, debitis provident earum, illo at, laudantium non? Fugit iste excepturi quae, veniam voluptatum reprehenderit enim.</p>
-                        <div className="btn-card"><Link to="/about" className="btn">Baca Selengkapnya</Link></div>
-                    </div>
+                    ))}
                 </div>
+
             </div>
         </div>
     )

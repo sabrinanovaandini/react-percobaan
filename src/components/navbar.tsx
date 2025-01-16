@@ -22,7 +22,7 @@ export default function Navbar(){
                     <div className="logo-search">
                         <FontAwesomeIcon icon={faSearch} />
                     </div>
-                    <input className="search-bar" id="search" type="text" placeholder="Search"></input>
+                    <input className="search-bar" id="search" type="text" placeholder="Pencarian"></input>
                 </div>
             </div>
 

@@ -4,6 +4,7 @@ import Navbar from "../components/navbar";
 import Carousel from "../components/carousel";
 import Footer from "../components/footer";
 import Card from "../components/card";
+import Card4 from "../components/card4";
 
 export default function Home(){
 
@@ -24,6 +25,8 @@ export default function Home(){
         <Carousel/>
 
         <Card/>
+
+        <Card4/>
 
         <Footer/>
 

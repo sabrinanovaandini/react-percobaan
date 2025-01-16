@@ -11,7 +11,7 @@ export default function Carousel(){
             <div className="carousel-slide">
                 
                 <div className="carousel-item">
-                    <img src="" alt="" />
+                    <img src="public/cover1.jpg" alt="" />
                     <div className="carousel-content">
                         <h2>Selamat Datang</h2>
                         <h1>SMK Negeri 2 Magelang</h1>
