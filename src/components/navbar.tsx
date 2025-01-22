@@ -31,7 +31,7 @@ export default function Navbar(){
 
                 <Link to="/about" className="navbar-toggle">PPDB</Link>
 
-                <Link to="/home" className="navbar-toggle">Berita</Link>
+                <Link to="/berita" className="navbar-toggle">Berita</Link>
 
                 <div className="navbar-dropdown">
                     <div className="navbar-toggle">Program Keahlian</div>

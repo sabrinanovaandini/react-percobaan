@@ -1,44 +1,80 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Carousel(){
     const router= useLocation()
 
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const slides = [
+        {
+          id: 1,
+          title: "Selamat Datang",
+          subtitle: "SMK Negeri 2 Magelang",
+          text: "Unggul dan Juara",
+          link: "/home",
+          btn: "Selengkapnya",
+          img: "public/backgroundcover.jpg",
+        },
+        {
+            id: 2,
+            title: "Eksplorasi Program Keahlian",
+            subtitle: "SMK Negeri 2 Magelang",
+            text: "Pilih Program Keahlianmu",
+            link: "/home",
+            btn: "Selengkapnya",
+            img: "public/images1.jpg",
+          },
+          {
+            id: 3,
+            title: "Bergabung Bersama Kami",
+            subtitle: "SMK Negeri 2 Magelang",
+            text: "Daftarkan Dirimu",
+            link: "/home",
+            btn: "Selengkapnya",
+            img: "public/cover1.jpg",
+          },
+        ];
+
+        useEffect(() => {
+            const interval = setInterval(() => {
+                setCurrentSlide((prev) => (prev + 1) % slides.length);
+            }, 5000); // Pindah setiap 5 detik
+            return () => clearInterval(interval);
+        }, [slides.length]);
+
     console.log(location.pathname)
     return (
+
         <div className="carousel">
-            <div className="carousel-slide">
-                
-                <div className="carousel-item">
-                    <img src="public/cover1.jpg" alt="" />
-                    <div className="carousel-content">
-                        <h2>Selamat Datang</h2>
-                        <h1>SMK Negeri 2 Magelang</h1>
-                        <p>Unggul dan Juara</p>
-                        <div className="btn-card"><Link to="/about" className="btn">Visi Misi</Link></div>
-                    </div>
-                </div>
-
-                <div className="carousel-item">
-                    <img src="" alt="" />
-                    <div className="carousel-content">
-                        <h1>Selamat Datang</h1>
-                        <h2>SMK Negeri 2 Magelang</h2>
-                        <p>Unggul dan Juara</p>
-                        <div className="btn-card"><Link to="/about" className="btn">Visi Misi</Link></div>
-                    </div>
-                </div>
-
-                {/* <ol className="carousel-indicators">
-                    <li data-bs-target="#hero-carousel" data-bs-slide-to="0" className=""></li>
-                    <li data-bs-target="#hero-carousel" data-bs-slide-to="1" className=""></li>
-                    <li data-bs-target="#hero-carousel" data-bs-slide-to="2" className="active" aria-current="true"></li>
-                </ol> */}
-
-
-
+          {slides.map((slide, index) => (
+            <div
+              key={slide.id}
+              className={`carousel-item ${index === currentSlide ? "active" : ""}`}
+            >
+              <img src={slide.img} alt={slide.title} className="carousel-img" />
+              <div className="carousel-content">
+                <h2>{slide.title}</h2>
+                <h1>{slide.subtitle}</h1>
+                <p>{slide.text}</p>
+                <div className="btn-visimisi"><Link to={slide.link} className="btn">{slide.btn}</Link></div>
+              </div>
             </div>
+          ))}
+
+          <div className="carousel-indicators">
+            {slides.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`indicator ${
+                  index === currentSlide ? "active" : ""
+                }`}
+              ></div>
+            ))}
+          </div>
+
         </div>
-    )
-}
+
+      );
+    }

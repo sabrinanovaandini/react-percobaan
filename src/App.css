@@ -35,25 +35,19 @@
   }
 }
 
-/* .card {
-  padding: 2em;
-} */
-
-.read-the-docs {
-  color: #888;
-}
-
 
 
 /* NAVBAR */
 
 .navbar {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   color: white;
   flex-direction: column;
   box-sizing: border-box; /* Pastikan padding tidak memengaruhi lebar */
+  z-index: 1000;
 }
 
 .navbar-title {
@@ -209,37 +203,130 @@
 /* carousel */
 
 .carousel {
-
-}
-
-.carousel-slide {
-
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 550px;
 }
 
 .carousel-item {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
 
+.carousel-item.active {
+  left: 0;
+  opacity: 1;
+}
+
+.carousel-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.5);
 }
 
 .carousel-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 32px;
+  /* background: #666; */
+  position: relative;
+  color: white;
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.carousel-content h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
+.carousel-content h2,
+.carousel-content h1,
 .carousel-content p {
-  font-size: 24px;
-  line-height: 1.1;
+  margin: 8px 0;
+  animation: slideIn 1s ease-out;
 }
+
+.btn-visimisi {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.carousel-content .btn {
+  padding: 8px 16px;
+  background-color: #747bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.carousel-content .btn:hover {
+  background-color: #213555;
+  border: none;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
 
 
 /* Card News */
+
 .card-news {
   background-color: white;
   color: black;
@@ -249,7 +336,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 16px;
+  /* padding: 32px 0px; */
 }
 
 .card-title{
@@ -270,7 +358,6 @@
   text-align: left;
 }
 .filter-items li {
-  /* background-color: #f39c12; */
   list-style-type: none;
   color: #213555;
   font-weight: 500;
@@ -284,13 +371,14 @@
 }
 .filter-items li:hover {
   border-bottom: 2px #213555 solid;
-  font-weight: bold;
+  font-weight: 500;
 }
 .filter-items li.active {
   border-bottom: 2px #213555 solid;
-  font-weight: bold;
+  font-weight: 500;
 }
 
+/* card berita */
 .card-card {
   display: flex;
   justify-content: space-between;
@@ -307,7 +395,7 @@
 }
 
 .card-img img {
-  width: 100%;
+  width: 360px;
   height: 240px; /*200px*/
   object-fit: cover;
   display: block;
@@ -315,23 +403,25 @@
 
 .card-caption {
   padding: 16px 32px;
-}
-
-.card-caption h3 {
-  margin: 8px 0;
-  font-size: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 360px;
 }
 
 .card-info {
   display: flex;
   gap: 8px;
-  margin: 8px 0px;
+  margin: 0px 0px;
   font-size: 0.875rem; /*noted*/
   color: #666;
 }
 
 .card-caption h3 {
   text-align: start;
+  margin: 0px 0;
+  font-size: 1.25rem;
+  height: 65px; /*check*/
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -341,7 +431,7 @@
 
 .card-caption p {
   text-align: justify;
-  margin: 8px 0;
+  margin: 0px 0;
   line-height: 1.5;
   height: px; /* Sesuaikan dengan tinggi maksimal yang diinginkan */
   overflow: hidden;
@@ -353,7 +443,69 @@
 
 
 
+
+/* Card4 Program Keahlian */
+
+.card-pk {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.card-content-row {
+  padding: 32px;
+  height: 240px;
+  overflow: hidden;
+  display: flex;
+}
+
+.card-img-pk img {
+  width: 360px;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-caption-pk {
+  padding: 16px 0px 16px 58px;
+  height: 208px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-caption-pk h3 {
+  margin: 0px 0;
+  font-size: 1.25rem;
+}
+
+.card-caption-pk h3 {
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card-caption-pk p {
+  text-align: justify;
+  margin: 0px 0;
+  line-height: 1.5;
+  height: 120px; /* Sesuaikan dengan tinggi maksimal yang diinginkan */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; /* Untuk multiline ellipsis */
+  -webkit-line-clamp: 5; /* Jumlah baris yang ingin ditampilkan */
+  -webkit-box-orient: vertical; /* Orientasi box */
+}
+
+
+
 /* footer */
+
 footer {
   background-color: #213555;
   padding: 32px 64px;
@@ -419,9 +571,37 @@ footer {
   color: #f39c12;
 }
 
-
 .copyright {
   padding-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
+
+
+
+
+
+
+
+
+/* Detail Berita */
+
+.news-details {
+  background-color: white;
+  padding: 32px 128px;
+  color: black;
+  text-align: justify;
+}
+.news-img img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
+}
+.news-caption {
+  /* background-color: #f39c12; */
+  
+}
+
+/* Detail Prog Keahlian */
+
