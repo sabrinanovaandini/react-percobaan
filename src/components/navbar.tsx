@@ -1,4 +1,4 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faCaretDown, faChevronDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation, } from "react-router-dom";
 
@@ -29,12 +29,12 @@ export default function Navbar(){
             <div className="navbar-menu">
                 <Link to="/home" className="navbar-toggle">Beranda</Link>
 
-                <Link to="/about" className="navbar-toggle">PPDB</Link>
+                <Link to="/ppdb" className="navbar-toggle">PPDB</Link>
 
                 <Link to="/berita" className="navbar-toggle">Berita</Link>
 
                 <div className="navbar-dropdown">
-                    <div className="navbar-toggle">Program Keahlian</div>
+                    <div className="navbar-toggle">Program Keahlian <FontAwesomeIcon icon={faCaretDown} /></div>
                     <div className="navbar-dropdown-menu">
                         <Link to="/home" className="">Akuntansi dan Keuangan Lembaga</Link>
                         <Link to="/home" className="">Manajemen Perkantoran dan Layanan Bisnis</Link>
@@ -44,25 +44,25 @@ export default function Navbar(){
                 </div>
 
                 <div className="navbar-dropdown">
-                    <div className="navbar-toggle">Kesiswaan</div>
+                    <div className="navbar-toggle">Kesiswaan <FontAwesomeIcon icon={faCaretDown} /></div>
                     <div className="navbar-dropdown-menu">
-                        <a href="#">Organisasi</a>
-                        <a href="#">Sub Organisasi</a>
-                        <a href="#">Ekstrakurikuler</a>
+                        <Link to="/organisasi" className="">Organisasi</Link>
+                        <Link to="/suborganisasi" className="">Sub Organisasi</Link>
+                        <Link to="/ekstrakurikuler" className="">Ekstrakurikuler</Link>
                     </div>
                 </div>
 
                 <div className="navbar-dropdown">
-                    <div className="navbar-toggle">Profil</div>
+                    <div className="navbar-toggle">Profil <FontAwesomeIcon icon={faCaretDown} /></div>
                     <div className="navbar-dropdown-menu">
-                        <a href="#">Identitas Sekolah</a>
-                        <a href="#">Tujuan</a>
-                        <a href="#">Visi Misi</a>
-                        <a href="#">Struktur Organisasi</a>
+                        <Link to="/home" className="">Identitas Sekolah</Link>
+                        <Link to="/home" className="">Tujuan</Link>
+                        <Link to="/home" className="">Visi Misi</Link>
+                        <Link to="/home" className="">Struktur Organisasi</Link>
                     </div>
                 </div>
 
-                <Link to="/home" className="navbar-toggle">Hubungi Kami</Link>
+                <Link to="/contact" className="navbar-toggle">Hubungi Kami</Link>
             </div>
 
         </nav>

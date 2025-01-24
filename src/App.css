@@ -140,6 +140,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 8px;
   transition: background-color 0.3s ease;
 }
 
@@ -256,27 +257,12 @@
   animation: slideIn 1s ease-out;
 }
 
-.btn-visimisi {
+.btn-selengkapnya {
   margin: 8px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-}
-
-.carousel-content .btn {
-  padding: 8px 16px;
-  background-color: #747bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-  border: none;
-}
-
-.carousel-content .btn:hover {
-  background-color: #213555;
-  border: none;
 }
 
 .carousel-indicators {
@@ -331,13 +317,6 @@
   background-color: white;
   color: black;
   padding: 32px 64px;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  /* padding: 32px 0px; */
 }
 
 .card-title{
@@ -479,9 +458,6 @@
 .card-caption-pk h3 {
   margin: 0px 0;
   font-size: 1.25rem;
-}
-
-.card-caption-pk h3 {
   text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -489,6 +465,15 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+
+/* .card-caption-pk h3 {
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+} */
 
 .card-caption-pk p {
   text-align: justify;
@@ -501,6 +486,41 @@
   -webkit-line-clamp: 5; /* Jumlah baris yang ingin ditampilkan */
   -webkit-box-orient: vertical; /* Orientasi box */
 }
+
+
+/* Scroll to Top */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent;
+  color: #747bff;
+  border: 3px solid #747bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background-color: #747bff;
+  color: white;
+  border: 3px solid #747bff;
+}
+
 
 
 
@@ -523,7 +543,6 @@ footer {
   flex-direction: column;
   text-align: left;
   margin-top: 24px;
-  /* padding: 0 12px; */
   width: 408px;
 }
 
@@ -576,6 +595,7 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
+/* End Footer */
 
 
 
@@ -603,5 +623,288 @@ footer {
   
 }
 
-/* Detail Prog Keahlian */
 
+
+/* Detail Prog Keahlian */
+.detail-pk {
+  background-color: white;
+  padding: 32px 64px;
+  color: black;
+  text-align: justify;
+}
+.dt-pk1 {
+  display: flex;
+  padding: 16px 32px;
+  gap: 32px;
+}
+.pk-image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.pk-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+.pk-content {
+  width: 50%;
+
+}
+.dt-pk2 {
+  padding: 16px 32px;
+}
+
+
+
+
+/* PPDB */
+.ppdb {
+  padding: 32px 64px;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.scroll-indicator {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  text-align: right;
+  animation: fadeInOut 2s infinite; /* Animasi opsional */
+}
+@keyframes fadeInOut {
+  0%, 100% {
+      opacity: 0.5;
+  }
+  50% {
+      opacity: 1;
+  }
+}
+.ppdb-images {
+  display: flex;
+  overflow-x: scroll; /* Mengaktifkan scroll horizontal */
+  gap: 24px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory; /* Smooth scrolling */
+  position: relative; /* Untuk gradient overlay */
+}
+/*  */
+.ppdb-images-wrapper {
+  position: relative;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+.ppdb-images::-webkit-scrollbar {
+    display: none; /* Sembunyikan scrollbar pada browser berbasis WebKit */
+}
+.ppdb-images {
+  -ms-overflow-style: none; /* Sembunyikan scrollbar pada IE dan Edge */
+  scrollbar-width: none; /* Sembunyikan scrollbar pada Firefox */
+}
+.ppdb-image {
+  flex: 0 0 auto; /* Gambar tidak menyusut */
+  scroll-snap-align: start; /* Gambar ter-align saat di-scroll */
+}
+.ppdb-image img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  object-position: center;
+  /* width: 300px; 
+  height: auto;  */
+  border: 2px solid #213555;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.349); /* Opsional: Memberikan bayangan */
+}
+
+.info-ppdb {
+  margin-top: 20px;
+}
+.info-ppdb a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.info-ppdb a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* Berita */
+.all-news {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 8px;
+}
+
+
+
+
+/* Contact Us */
+.contact-us {
+  background-color: white;
+  color: black;
+  padding: 32px 64px;
+}
+.contact-us h2,
+.contact-us h3,
+.contact-us p {
+    margin: 0;
+}
+.contact {
+  /* background-color: #f39c12; */
+  display: flex;
+  border-radius: 8px;
+}
+/* Hubungi/kiri */
+.social {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 46px;
+  color: #213555;
+  text-align: justify;
+
+}
+.social-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.social-icon {
+  background-color: #213555;
+  color: white;
+  border-radius: 50%;
+  margin: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-icon a {
+  text-decoration: none;
+}
+.social-content {
+  text-align: left;
+}
+.social-content h3 p {
+  margin: 0px 0;
+}
+.media-sosial {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 8px;
+}
+.ms {
+  display: flex;
+}
+/* pesan/kanan */
+.message {
+  background-color: white;
+  width: 50%;
+  color: #213555;
+  padding: 32px 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+.form-message {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 16px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.349);
+}
+.form-group {
+  background-color: white;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.form-group input,
+.form-group textarea {
+  /* width: 100%; */
+  padding: 10px;
+  border: 1px solid #213555; 
+  border-radius: 24px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+  color: #213555;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    background-color: #fff;
+}
+textarea {
+  resize: none;
+  height: 124px;
+}
+/* Warna dan jarak tulisan placeholder */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #888; /* Warna placeholder */
+    font-size: 0.9em; /* Ukuran font placeholder */
+    padding-left: 5px; /* Jarak placeholder dari kiri */
+    font-style: italic; /* Gaya tulisan miring (opsional) */
+    opacity: 1; /* Pastikan placeholder terlihat jelas */
+}
+
+/* Saat input atau textarea dalam fokus */
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    color: #bbb; /* Warna placeholder saat fokus */
+    font-style: normal; /* Kembali ke gaya normal */
+    opacity: 0.7; /* Sedikit transparan (opsional) */
+}
+
+
+
+
+/* Google Maps */
+.maps {
+  background-color: white;
+  padding: 32px;
+}
+.maps iframe {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.349);
+}

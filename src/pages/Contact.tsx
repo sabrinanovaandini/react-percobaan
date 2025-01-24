@@ -1,13 +1,15 @@
+import ContactUs from "../components/contact-us";
 import Footer from "../components/footer";
-import PkDetail from './components/pkDetail';
+import Maps from "../components/maps";
 import Navbar from "../components/navbar";
 import ScrollTop from "../components/scrolltop";
 
-export default function DetailPK {
+export default function Contact(){
     return(
         <>
             <Navbar />
-            <PkDetail />
+            <ContactUs/>
+            <Maps/>
             <Footer />
             <ScrollTop/>
         </>

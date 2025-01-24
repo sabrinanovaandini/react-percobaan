@@ -13,7 +13,8 @@ export default function NewsCard() {
 
       console.log(filteredNews)
   return (
-    <div className="card">
+
+    <div className="card-news">
       <div className="card-title">
         <h1>Berita Terkini</h1>
       </div>
@@ -26,6 +27,7 @@ export default function NewsCard() {
 
       <NewsList filteredNews={filteredNews} />
     </div>
+
   );
 }
 

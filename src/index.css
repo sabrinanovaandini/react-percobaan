@@ -35,7 +35,7 @@ body {
   line-height: 1.1;
 } */
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -52,7 +52,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -69,7 +69,9 @@ button:focus-visible {
 
 
 
-
+h1 h2 h3 h4 h5 h6 {
+  margin: 0em;
+}
 
 
 .btn-card {
@@ -96,6 +98,7 @@ button:focus-visible {
   background: transparent;
 }
 
+
 .btn-sm {
   text-decoration: none;
   color: white;
@@ -111,4 +114,19 @@ button:focus-visible {
   color: #213555;
   border: 1px #213555 solid;
   background: transparent;
+}
+
+
+.button {
+  padding: 8px 16px;
+  background-color: #747bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+.button:hover {
+  background-color: #213555;
+  border: none;
 }

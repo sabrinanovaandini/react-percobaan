@@ -1,15 +1,15 @@
 import Footer from "../components/footer";
-import PkDetail from './components/pkDetail';
 import Navbar from "../components/navbar";
+import PpdbInfo from "../components/ppdb-info";
 import ScrollTop from "../components/scrolltop";
 
-export default function DetailPK {
+export default function PPDB() {
     return(
         <>
-            <Navbar />
-            <PkDetail />
-            <Footer />
-            <ScrollTop/>
+        <Navbar/>
+        <PpdbInfo />
+        <Footer/>
+        <ScrollTop/>
         </>
     )
 }

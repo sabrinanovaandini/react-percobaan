@@ -4,8 +4,7 @@ import pkData from "../data/pkdata";
 export default function CardPK(){
     const router= useLocation()
     // Misalnya, ambil data pertama dari pkData untuk ditampilkan
-    const pk = pkData[0]; // Ganti logika ini jika ingin menggunakan ID atau parameter lain
-
+    // const pk = pkData[0]; // Ganti logika ini jika ingin menggunakan ID atau parameter lain
 
     console.log(location.pathname)
     return (
@@ -21,7 +20,7 @@ export default function CardPK(){
                             <div className="card-img-pk"><img src={pk.image} alt={pk.title}/></div>
                             <div className="card-caption-pk">
                                 <h3>{pk.title}</h3>
-                                <p>{pk.content}</p>
+                                <p>{pk.content1}</p>
                                 <div className="btn-card"><Link to={`/pk/${pk.id}`} className="btn">Baca Selengkapnya</Link></div>
                             </div>
                         </div>

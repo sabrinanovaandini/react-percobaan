@@ -57,7 +57,7 @@ export default function Carousel(){
                 <h2>{slide.title}</h2>
                 <h1>{slide.subtitle}</h1>
                 <p>{slide.text}</p>
-                <div className="btn-visimisi"><Link to={slide.link} className="btn">{slide.btn}</Link></div>
+                <div className="btn-selengkapnya"><Link to={slide.link} className="button">{slide.btn}</Link></div>
               </div>
             </div>
           ))}

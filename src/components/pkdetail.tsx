@@ -11,12 +11,17 @@ export default function pkDetail() {
 
     return (
         <div className="detail-pk">
-            <div className="pk-image">
-                <img src={pk.image} alt={pk.title} />
+            <div className="dt-pk1">
+                <div className="pk-image">
+                    <img src={pk.image} alt={pk.title} />
+                </div>
+                <div className="pk-content">
+                    <h1>{pk.title}</h1>
+                    <p>{pk.content1}</p>
+                </div>
             </div>
-            <div className="pk-content">
-                <h1>{pk.title}</h1>
-                <p>{pk.content}</p>
+            <div className="dt-pk2">
+                <p>{pk.content2}</p>
             </div>
         </div>
     );
