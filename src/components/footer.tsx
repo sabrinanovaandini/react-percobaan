@@ -16,11 +16,11 @@ export default function Footer(){
                         <p>Jalan Jend. Ahmad Yani 135 A, Kramat Selatan, Magelang Utara, 56115 Magelang, Jawa Tengah, (0293) 362577</p>
                         <p>
                             <strong>Telp : </strong>
-                            <span>0293 362577</span>
+                            <span>(0293) 362577</span>
                         </p>
                         <p>
                             <strong>Fax : </strong>
-                            <span>0293 313172</span>
+                            <span>(0293) 313172</span>
                         </p>
                         <p>
                             <strong>Email : </strong>

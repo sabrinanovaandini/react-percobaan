@@ -1,4 +1,4 @@
-import { faAngleDown, faCaretDown, faChevronDown, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation, } from "react-router-dom";
 
@@ -55,10 +55,8 @@ export default function Navbar(){
                 <div className="navbar-dropdown">
                     <div className="navbar-toggle">Profil <FontAwesomeIcon icon={faCaretDown} /></div>
                     <div className="navbar-dropdown-menu">
-                        <Link to="/home" className="">Identitas Sekolah</Link>
-                        <Link to="/home" className="">Tujuan</Link>
-                        <Link to="/home" className="">Visi Misi</Link>
-                        <Link to="/home" className="">Struktur Organisasi</Link>
+                        <Link to="/home" className="">Visi, Misi, Tujuan</Link>
+                        <Link to="/strukturorganisasi" className="">Struktur Organisasi</Link>
                     </div>
                 </div>
 

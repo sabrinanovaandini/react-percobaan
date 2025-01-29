@@ -1,13 +1,18 @@
 import { useParams } from "react-router-dom";
 import pkData from "../data/pkdata";
 
-export default function pkDetail() {
+export default function PkDetail() {
     const { id } = useParams(); // Ambil ID dari URL
-    const pk = pkData.find((item) => item.id === parseInt(id)); // Temukan data sesuai ID
+    const pk = pkData.find((item) => item.id === Number(id, 10)); // Temukan data sesuai ID
 
     if (!pk) {
         return <p>Data tidak ditemukan.</p>; // Jika ID tidak valid
     }
+    console.log(pkData, id);
+    console.log("pkData:", pkData);
+console.log("ID dari URL:", id);
+console.log("Data yang ditemukan:", pk);
+
 
     return (
         <div className="detail-pk">

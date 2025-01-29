@@ -38,7 +38,6 @@
 
 
 /* NAVBAR */
-
 .navbar {
   position: relative;
   width: 100%;
@@ -198,6 +197,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
 }
+/* End Navbar */
 
 
 
@@ -534,7 +534,9 @@ footer {
 .footer-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding-bottom: 32px;
+  text-align: left;
 }
 
 .footer-content1 {
@@ -565,7 +567,6 @@ footer {
   flex-direction: column;
   text-align: left;
   margin-top: 24px;
-  /* padding: 0 12px; */
   width: 184px;
 }
 
@@ -595,7 +596,18 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
 }
-/* End Footer */
+
+@media (max-width: 1024px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-content1, .footer-content2 {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
+
 
 
 
@@ -773,16 +785,19 @@ footer {
   color: black;
   padding: 32px 64px;
 }
+
 .contact-us h2,
 .contact-us h3,
 .contact-us p {
-    margin: 0;
+  margin: 0;
 }
+
 .contact {
-  /* background-color: #f39c12; */
   display: flex;
   border-radius: 8px;
+  justify-content: space-between; /* Ensure space between social and message */
 }
+
 /* Hubungi/kiri */
 .social {
   width: 50%;
@@ -792,13 +807,14 @@ footer {
   padding: 32px 46px;
   color: #213555;
   text-align: justify;
-
 }
+
 .social-group {
   display: flex;
   align-items: center;
   gap: 8px;
 }
+
 .social-icon {
   background-color: #213555;
   color: white;
@@ -810,24 +826,31 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
 .social-icon a {
   text-decoration: none;
 }
+
 .social-content {
   text-align: left;
 }
+
 .social-content h3 p {
   margin: 0px 0;
 }
+
 .media-sosial {
   display: flex;
   flex-direction: column;
-  text-align: start;
-  gap: 8px;
+  text-align: start;gap: 8px;
+  align-items: flex-start; /* Keep media social icons aligned left */
 }
+
 .ms {
   display: flex;
+  gap: 10px; /* Add space between icons */
 }
+
 /* pesan/kanan */
 .message {
   background-color: white;
@@ -839,6 +862,7 @@ footer {
   align-items: center;
   text-align: justify;
 }
+
 .form-message {
   background: white;
   width: 100%;
@@ -850,51 +874,142 @@ footer {
   border-radius: 16px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.349);
 }
+
 .form-group {
   background-color: white;
   margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
+
 .form-group input,
 .form-group textarea {
-  /* width: 100%; */
   padding: 10px;
-  border: 1px solid #213555; 
+  border: 1px solid #213555;
   border-radius: 24px;
   background-color: #f9f9f9;
   transition: all 0.3s ease;
   color: #213555;
 }
+
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    background-color: #fff;
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  background-color: #fff;
 }
+
 textarea {
   resize: none;
   height: 124px;
 }
+
 /* Warna dan jarak tulisan placeholder */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #888; /* Warna placeholder */
-    font-size: 0.9em; /* Ukuran font placeholder */
-    padding-left: 5px; /* Jarak placeholder dari kiri */
-    font-style: italic; /* Gaya tulisan miring (opsional) */
-    opacity: 1; /* Pastikan placeholder terlihat jelas */
+  color: #888;
+  font-size: 0.9em;
+  padding-left: 5px;
+  font-style: italic;
+  opacity: 1;
 }
 
 /* Saat input atau textarea dalam fokus */
 .form-group input:focus::placeholder,
 .form-group textarea:focus::placeholder {
-    color: #bbb; /* Warna placeholder saat fokus */
-    font-style: normal; /* Kembali ke gaya normal */
-    opacity: 0.7; /* Sedikit transparan (opsional) */
+  color: #bbb;
+  font-style: normal;
+  opacity: 0.7;
 }
 
+/* Responsive Adjustments */
+
+/* For smaller screens (tablets and below) */
+@media (max-width: 1024px) {
+  .contact {
+    flex-wrap: wrap; /* Allow items to wrap when necessary */
+    justify-content: center; /* Center content when wrapping */
+  }
+
+  .social,
+  .message {
+    width: 100%; /* Make both sections full width on smaller screens */
+    padding: 20px;
+  }
+
+  .form-message {
+    padding: 16px;
+  }
+
+  .social-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ms {
+    flex-wrap: wrap; /* Allow social icons to wrap */
+  }
+
+  .social-icon {
+    margin: 5px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%; /* Ensure form inputs fill the container */
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    font-size: 0.8em; /* Reduce placeholder font size on smaller screens */
+  }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 600px) {
+  .contact-us {
+    padding: 16px;
+  }
+
+  .social {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .message {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .form-message {
+    padding: 16px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 8px;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    font-size: 0.75em; /* Further reduce placeholder font size */
+  }
+
+  .ms {
+    justify-content: center; /* Center social icons on small screens */
+  }
+
+  .social-icon {
+    margin: 4px;
+  }
+}
+/* End Contact Us */
 
 
 
@@ -902,9 +1017,33 @@ textarea {
 .maps {
   background-color: white;
   padding: 32px;
+  display: flex;
+  justify-content: center; /* Center the iframe */
+  align-items: center; /* Vertically center the iframe */
 }
+
 .maps iframe {
   border: none;
   border-radius: 16px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.349);
+  width: 100%; /* Make iframe width 100% of the container */
+  max-width: 1000px; /* Optional: Max width for larger screens */
+  height: 400px; /* Fixed height, will adjust based on container width */
+  aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+  object-fit: cover; /* Ensure the map scales well */
 }
+
+/* For smaller screens (tablets and below) */
+@media (max-width: 1024px) {
+  .maps iframe {
+    height: 300px; /* Adjust height on smaller screens */
+  }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 600px) {
+  .maps iframe {
+    height: 250px; /* Further adjust height on phones */
+  }
+}
+/* End Google Maps */

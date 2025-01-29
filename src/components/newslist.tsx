@@ -1,7 +1,4 @@
-import React from "react";
-import newsData from "../data/newsdata";
 import { Link } from "react-router-dom";
-import BtnSelengkapnya from "./btn-selengkapnya";
 
 export default function NewsList({ filteredNews }) {
   return (
@@ -23,7 +20,6 @@ export default function NewsList({ filteredNews }) {
             <div className="btn-card">
                 <Link to={`/news/${news.id}`} className="btn">Baca Selengkapnya</Link>
             </div>
-            {/* <BtnSelengkapnya/> */}
           </div>
         </div>
       ))}

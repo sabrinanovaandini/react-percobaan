@@ -11,6 +11,7 @@ export default function OrganisasiInfo() {
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis error doloribus aut atque eum qui. Dicta minus excepturi sed, totam deleniti velit. Autem aspernatur praesentium voluptatem ipsum? Laborum, alias temporibus.
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi voluptatibus error dicta, nesciunt ab quaerat eius quod nobis ipsam quibusdam vel aliquid? Itaque eius nihil obcaecati! Quibusdam aspernatur et soluta?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quia natus unde ad quas illum voluptates repellat earum et recusandae id esse, sint cum fuga corporis nihil expedita! Et, ea?
                     </p>
                 </div>
             </div>
