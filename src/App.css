@@ -75,7 +75,7 @@
 }
 
 .navbar-logo h1 {
-  font-size: 3.2em; /*noted*/
+  font-size: 3.2em;
   line-height: 1.1;
 }
 
@@ -119,14 +119,25 @@
   /* position: relative; */
 }
 
-.navbar-menu {
+.navigation {
   background-color: #213555;
   width: 100%;
+  height: 48px;
+  padding: 0px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.navbar-menu {
+  background-color: #213555;
+  /* width: 100%; */
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
 }
 
 .navbar-toggle {
@@ -160,24 +171,13 @@
   top: 100%;
   left: 0;
   background: #213555;
-  color: black;
   padding: 0; /* Sesuaikan padding untuk menu */
   border-radius: 0px 0px 8px 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: block; /* Tetap gunakan block untuk memastikan animasi terlihat */
-  visibility: hidden; /* Awalnya tidak terlihat */
-  opacity: 0; /* Awalnya transparan */
-  transform: translateY(-10px); /* Awalnya sedikit di atas */
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Tambahkan transisi untuk visibility */
   width: auto; /* Lebar menyesuaikan dengan konten di dalamnya */
   white-space: nowrap; /* Menghindari pemotongan teks jika panjang */
   text-align: left;
-}
-
-.navbar-dropdown:hover .navbar-dropdown-menu {
-  visibility: visible; /* Menu menjadi terlihat */
-  opacity: 1; /* Tampilkan menu */
-  transform: translateY(0); /* Geser ke posisi normal */
 }
 
 .navbar-dropdown-menu a {
@@ -197,12 +197,103 @@
   background-color: rgba(0, 0, 0, 0.3);
   color: white;
 }
+
+.menu-icon {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-title {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .navbar-logo {
+    gap: 8px;
+    font-size: 6px; /*noted*/
+  }
+  
+  .navbar-logo h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+  }
+
+  .nav-menu-icon {
+    padding: 12px 24px;
+    display: flex;
+  }
+
+  .navigation {
+  background-color: #213555;
+  width: 100%;
+  height: 48px;
+  padding: 8px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  font-weight: 500;
+  }
+
+  .menu-icon {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    color: #213555;
+    margin: 8px 16px;
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background: brown;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    padding: 16px 0;
+  }
+
+  .navbar-menu.open {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    background: #213555;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+    padding: 16px 0;
+  }
+
+  .navbar-toggle {
+    padding: 12px 24px;
+    /* width: 100%; */
+    text-align: center;
+  }
+
+  .navbar-dropdown-menu {
+    position: relative;
+    background-color: #1e2d44;
+    padding: 8px 24px;
+  }
+
+  .search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 256px;
+  height: 32px;
+  }
+}
 /* End Navbar */
 
 
 
 /* carousel */
-
 .carousel {
   position: relative;
   overflow: hidden;
@@ -242,7 +333,6 @@
 }
 
 .carousel-content {
-  /* background: #666; */
   position: relative;
   color: white;
   text-align: center;
@@ -307,61 +397,124 @@
     opacity: 1;
   }
 }
+/* End Carousel */
 
 
 
 
-/* Card News */
-
+/* Berita / News */
 .card-news {
   background-color: white;
   color: black;
   padding: 32px 64px;
 }
 
-.card-title{
+.card-title {
   color: #213555;
 }
 
+/* Card Filter */
 .card-filter {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px #ddd solid;
+  padding: 16px 0; /* Menambahkan sedikit padding untuk ruang yang lebih baik */
+  position: relative;
 }
+
 .filter-items {
   display: flex;
   gap: 32px;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   text-align: left;
+  flex-wrap: wrap; /* Agar item filter bisa melipat jika diperlukan */
 }
+
 .filter-items li {
   list-style-type: none;
   color: #213555;
   font-weight: 500;
-  padding: 16px 0px;
-  margin: 0px;
+  padding: 16px 0;
+  margin: 0;
   text-align: left;
   height: 100%;
   font-size: 14px;
   cursor: pointer;
   border-bottom: 2px solid transparent;
 }
+
 .filter-items li:hover {
   border-bottom: 2px #213555 solid;
   font-weight: 500;
 }
+
 .filter-items li.active {
   border-bottom: 2px #213555 solid;
   font-weight: 500;
 }
 
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .card-filter {
+    flex-direction: column;
+    align-items: flex-start; /* Menumpuk elemen secara vertikal pada tablet */
+    gap: 16px; /* Menambah jarak antar elemen */
+  }
+
+  .filter-items {
+    justify-content: flex-start; /* Menjaga daftar kategori di kiri */
+    gap: 16px; /* Mengurangi jarak antar kategori */
+  }
+
+  .filter-items li {
+    font-size: 16px; /* Menambah ukuran font pada tablet */
+  }
+
+  .filter-items + .btn-sm {
+    position: absolute; /* Tombol berada di posisi tetap */
+    top: 50%;
+    right: 0; /* Menjaga tombol tetap di kanan */
+    transform: translateY(-50%); /* Menempatkan tombol di tengah secara vertikal */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-filter {
+    flex-direction: column;
+    align-items: flex-start; /* Menumpuk elemen secara vertikal pada ponsel */
+    gap: 16px;
+  }
+
+  .filter-items {
+    justify-content: flex-start;
+    gap: 12px; /* Mengurangi jarak antar kategori */
+  }
+
+  .filter-items li {
+    font-size: 14px; /* Menurunkan ukuran font pada ponsel */
+  }
+  .filter-items + .btn-sm {
+    position: absolute; /* Tombol berada di posisi tetap */
+    top: 50%;
+    right: 0; /* Menjaga tombol tetap di kanan */
+    transform: translateY(-50%); /* Menempatkan tombol di tengah secara vertikal */
+  }
+}
+/* End filter news card */
+
+
 /* card berita */
-.card-card {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 24px;
+.all-news {
+  display: grid;
+  grid-template-columns: repeat(3, 365px); /* 3 kolom dengan lebar tetap */
+  gap: 32px;
+  justify-content: space-evenly;
+  justify-items: center; /* Agar item grid tetap terpusat */
+  padding-top: 32px;
+  max-width: 100%; /* Hindari ruang kosong di kanan */
+  margin: 0 auto;  /* Tengahkan grid kalau kurang dari layar penuh */
 }
 
 .card-content {
@@ -412,7 +565,7 @@
   text-align: justify;
   margin: 0px 0;
   line-height: 1.5;
-  height: px; /* Sesuaikan dengan tinggi maksimal yang diinginkan */
+  /* height: px; */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box; /* Untuk multiline ellipsis */
@@ -420,11 +573,23 @@
   -webkit-box-orient: vertical; /* Orientasi box */
 }
 
+@media (max-width: 1024px) {
+  .all-news {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .all-news {
+    grid-template-columns: 1fr; /* 1 kolom untuk layar ponsel */
+  }
+}
+/* End Card Berita */
+/*  End Berita / News */
 
 
 
 /* Card4 Program Keahlian */
-
 .card-pk {
   display: flex;
   flex-direction: column;
@@ -466,26 +631,76 @@
   -webkit-box-orient: vertical;
 }
 
-/* .card-caption-pk h3 {
-  text-align: start;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-} */
-
 .card-caption-pk p {
   text-align: justify;
   margin: 0px 0;
   line-height: 1.5;
-  height: 120px; /* Sesuaikan dengan tinggi maksimal yang diinginkan */
+  max-height: calc(1.5em * 5); /* Sesuaikan dengan line-height dan jumlah baris */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box; /* Untuk multiline ellipsis */
   -webkit-line-clamp: 5; /* Jumlah baris yang ingin ditampilkan */
   -webkit-box-orient: vertical; /* Orientasi box */
 }
+
+@media screen and (max-width: 1024px) {
+  .card-news {
+    padding: 24px 32px;
+  }
+
+  .card-content-row {
+    flex-direction: column;
+    height: auto;
+    padding: 24px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-img-pk img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+  }
+
+  .card-caption-pk {
+    padding: 16px;
+    text-align: center;
+  }
+
+  .card-caption-pk h3 {
+    font-size: 1.1rem;
+  }
+
+  .card-caption-pk p {
+    -webkit-line-clamp: 5;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-news {
+    padding: 16px;
+  }
+
+  .card-content-row {
+    padding: 16px;
+  }
+
+  .card-caption-pk {
+    padding: 8px;
+  }
+
+  .card-caption-pk h3 {
+    font-size: 1rem;
+  }
+
+  .card-caption-pk p {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 5;
+  }
+}
+/* End Card Program Keahlian (PK) */
+
+
 
 
 /* Scroll to Top */
@@ -495,7 +710,7 @@
   right: 20px;
   background-color: transparent;
   color: #747bff;
-  border: 3px solid #747bff;
+  border: 2px solid #747bff;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -518,14 +733,14 @@
 .scroll-to-top:hover {
   background-color: #747bff;
   color: white;
-  border: 3px solid #747bff;
+  border: 2px solid #747bff;
 }
+/* End Scroll to Top */
 
 
 
 
 /* footer */
-
 footer {
   background-color: #213555;
   padding: 32px 64px;
@@ -537,6 +752,7 @@ footer {
   flex-wrap: wrap;
   padding-bottom: 32px;
   text-align: left;
+  color: white;
 }
 
 .footer-content1 {
@@ -546,6 +762,7 @@ footer {
   text-align: left;
   margin-top: 24px;
   width: 408px;
+  color: white;
 }
 
 .footer-title {
@@ -558,6 +775,9 @@ footer {
 .footer-contact {
   font-size: 16px;
   line-height: normal;
+}
+.footer-contact p, 
+.copyright p {
   color: white;
 }
 
@@ -593,7 +813,7 @@ footer {
 
 .copyright {
   padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid white;
   text-align: center;
 }
 
@@ -607,6 +827,7 @@ footer {
     padding: 0 16px;
   }
 }
+/* End Footer */
 
 
 
@@ -617,7 +838,6 @@ footer {
 
 
 /* Detail Berita */
-
 .news-details {
   background-color: white;
   padding: 32px 128px;
@@ -632,8 +852,8 @@ footer {
 }
 .news-caption {
   /* background-color: #f39c12; */
-  
 }
+/* End Detail Berita */
 
 
 
@@ -654,20 +874,47 @@ footer {
   display: flex;
   align-items: center;
   position: relative;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .pk-image img {
   width: 100%;
-  height: 300px;
+  height: 350px;
   object-fit: cover;
   object-position: center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 .pk-content {
   width: 50%;
-
 }
 .dt-pk2 {
   padding: 16px 32px;
 }
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .dt-pk1 {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .pk-image, .pk-content {
+    width: 100%;
+  }
+  .pk-image img {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-pk {
+    padding: 16px;
+  }
+  .dt-pk1 {
+    gap: 12px;
+  }
+}
+/* End Detail Prog Keahlian */
 
 
 
@@ -765,16 +1012,7 @@ footer {
 .info-ppdb a:hover {
   text-decoration: underline;
 }
-
-
-
-
-/* Berita */
-.all-news {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 8px;
-}
+/* End PPDB */
 
 
 
@@ -1013,6 +1251,7 @@ textarea {
 
 
 
+
 /* Google Maps */
 .maps {
   background-color: white;
@@ -1047,3 +1286,64 @@ textarea {
   }
 }
 /* End Google Maps */
+
+
+
+
+
+/* Sub-Organisasi & Ekstrakurikuler */
+.card-sub {
+  padding: 32px;
+}
+.card-content-sub {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.card-img-sub {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+.card-info-sub {
+  width: 60%;
+  /* padding: 32px; */
+}
+
+.card-img-sub img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .card-content-sub {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .card-img-sub, .card-info-sub {
+    width: 100%;
+  }
+  .card-img-sub img {
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-sub {
+    padding: 16px;
+  }
+  .card-content-sub {
+    gap: 12px;
+  }
+}
+/* Sub-Organisasi & Ekstrakurikuler */
+
+

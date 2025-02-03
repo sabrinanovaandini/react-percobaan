@@ -27,9 +27,7 @@ export default function AllNews() {
                 newsData={newsData} // Pass newsData to derive categories
             />
 
-            <div className="all-news">
-                <NewsList filteredNews={filteredNews} />
-            </div>
+            <NewsList filteredNews={filteredNews} />
         </div>
     </>
   );

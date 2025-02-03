@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NewsList({ filteredNews }) {
   return (
-    <div className="card-card">
+    <div className="all-news">
       {filteredNews.map((news) => (
         <div className="card-content" key={news.id}>
           <div className="card-img">

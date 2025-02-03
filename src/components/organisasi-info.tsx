@@ -4,7 +4,7 @@ export default function OrganisasiInfo() {
         <div className="detail-pk">
             <div className="dt-pk1">
                 <div className="pk-image">
-                    <img src="" alt="" />
+                    <img src="/images/osis.jpg" alt="" />
                 </div>
                 <div className="pk-content">
                     <h1>Organisasi (OSKAMA)</h1>

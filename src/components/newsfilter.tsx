@@ -21,6 +21,17 @@ export function NewsFilter({ selectedCategory, onSelectCategory, newsData }) {
           </li>
         ))}
       </ul>
+
+      {/* <div className="filter-dropdown">
+        <select onChange={(e) => handleCategoryChange(e.target.value)} value={selectedCategory}>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div> */}
+      
       <Link to="/berita" className="btn-sm">Lihat Semua</Link>
     </div>
   );

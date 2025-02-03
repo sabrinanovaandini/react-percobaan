@@ -2,11 +2,11 @@ import { Link, useLocation, } from "react-router-dom";
 import pkData from "../data/pkdata";
 
 export default function CardPK(){
-    // const router= useLocation()
+    const router= useLocation()
 
-    // console.log(router.pathname)
+    console.log(router.pathname)
     return (
-        <div className="card-news">
+        <div className="card-news" id="program-keahlian">
             <div className="card">
                 <div className="card-title">
                     <h1>Program Keahlian</h1>

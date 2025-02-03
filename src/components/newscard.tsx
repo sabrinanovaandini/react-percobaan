@@ -14,7 +14,7 @@ export default function NewsCard() {
       console.log(filteredNews)
   return (
 
-    <div className="card-news">
+    <div className="card-news" id="berita-smk">
       <div className="card-title">
         <h1>Berita Terkini</h1>
       </div>
@@ -25,7 +25,7 @@ export default function NewsCard() {
         newsData={newsData} // Pass newsData to derive categories
       />
 
-      <NewsList filteredNews={filteredNews} />
+      <NewsList filteredNews={filteredNews.slice(0, 3)} />
     </div>
 
   );

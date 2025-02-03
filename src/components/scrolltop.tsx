@@ -5,8 +5,11 @@ import { faArrowUp} from "@fortawesome/free-solid-svg-icons";
 export default function ScrollTop() {
     const [isVisible, setIsVisible] = useState(false);
 
-    // Fungsi untuk mendeteksi scroll dan menampilkan tombol jika posisi scroll cukup jauh
     useEffect(() => {
+        // Scroll ke atas saat halaman dimuat
+        window.scrollTo(0, 0);
+
+        // Fungsi untuk mendeteksi scroll dan menampilkan tombol jika posisi scroll cukup jauh
         const toggleVisibility = () => {
             if (window.scrollY > 300) {
                 setIsVisible(true);
@@ -19,7 +22,7 @@ export default function ScrollTop() {
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, []);
 
-    // Fungsi untuk scroll ke atas
+    // Fungsi untuk button scroll ke atas
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,

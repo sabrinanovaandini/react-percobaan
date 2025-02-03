@@ -261,3 +261,48 @@ h1 h2 h3 h4 h5 h6 {
   }
 }
 /* End Card Struktur Organisasi Sekolah */
+
+
+
+/* Visi Misi Tujuan Sekolah */
+.vimitu {
+  background-color: white;
+  padding: 32px 64px;
+}
+
+.vimitu-container {
+  color: black;
+  max-width: 800px;
+  margin: auto;
+  padding: 32px 64px;
+  text-align: center;
+}
+
+.title {
+  /* font-size: 28px; */
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.visi-section {
+  margin-bottom: 32px;
+  font-size: 18px;
+  color: #34495e;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 22px;
+  color: #2c3e50;
+}
+
+.section p, .section li {
+  font-size: 18px;
+  color: #34495e;
+  text-align: justify;
+}
+/* End Visi Misi Tujuan Sekolah */
