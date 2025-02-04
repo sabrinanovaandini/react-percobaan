@@ -54,6 +54,14 @@ export default function Navbar() {
                 </button>
 
                 <div className={`navbar-menu ${menuOpen ? "open" : ""}`} ref={dropdownRef}>
+                    <div className="search-nav">
+                        <div className="search-1">
+                            <div className="logo-search">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </div>
+                            <input className="search-bar" id="search" type="text" placeholder="Pencarian" />
+                        </div>
+                    </div>
                     <Link to="/home" className="navbar-toggle">Beranda</Link>
                     <Link to="/ppdb" className="navbar-toggle">PPDB</Link>
                     <Link to="/berita" className="navbar-toggle">Berita</Link>

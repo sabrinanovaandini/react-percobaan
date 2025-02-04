@@ -79,7 +79,8 @@
   line-height: 1.1;
 }
 
-.search {
+.search,
+.search-1 {
   background-color: white;
   border: 1px solid #888;
   border-radius: 16px;
@@ -129,6 +130,11 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
+}
+
+.search-nav {
+  display: none;
+  padding: 8px 24px;
 }
 
 .navbar-menu {
@@ -208,16 +214,6 @@
     height: 64px;
   }
 
-  .navbar-logo {
-    gap: 8px;
-    font-size: 6px; /*noted*/
-  }
-  
-  .navbar-logo h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
-  }
-
   .nav-menu-icon {
     padding: 12px 24px;
     display: flex;
@@ -266,7 +262,7 @@
     top: 100%;
     left: 0;
     z-index: 999;
-    padding: 16px 0;
+    padding: 0 0 16px 0;
   }
 
   .navbar-toggle {
@@ -282,11 +278,19 @@
   }
 
   .search {
+    display: none;
+  }
+
+  .search-1 {
   display: flex;
   align-items: center;
   position: relative;
-  width: 256px;
+  width: 100%;
   height: 32px;
+  }
+
+  .search-nav {
+    display: block;
   }
 }
 /* End Navbar */
@@ -1114,6 +1118,7 @@ footer {
 }
 
 .form-group {
+  width: 100%;
   background-color: white;
   margin-bottom: 16px;
   display: flex;
@@ -1122,12 +1127,14 @@ footer {
 
 .form-group input,
 .form-group textarea {
+  width: 100%;
   padding: 10px;
   border: 1px solid #213555;
   border-radius: 24px;
   background-color: #f9f9f9;
   transition: all 0.3s ease;
   color: #213555;
+  box-sizing: border-box;
 }
 
 .form-group input:focus,
@@ -1160,8 +1167,6 @@ textarea {
   font-style: normal;
   opacity: 0.7;
 }
-
-/* Responsive Adjustments */
 
 /* For smaller screens (tablets and below) */
 @media (max-width: 1024px) {
@@ -1214,7 +1219,7 @@ textarea {
     width: 100%;
     padding: 16px;
   }
-
+/*  */
   .message {
     width: 100%;
     padding: 16px;
