@@ -25,15 +25,15 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  height: 100vh;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
+/* h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+} */
 
 button {
   border-radius: 8px;
@@ -65,4 +65,30 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+
+}
+
+.logo {
+  width: fit-content;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /* margin: 10px; */
+}
+.logo img {
+  width: 40px;
+  height: auto;
+}
+.logo p {
+  width: 100px;
+  font-weight: bold;
+  color: #213547;
+  line-height: normal;
 }
