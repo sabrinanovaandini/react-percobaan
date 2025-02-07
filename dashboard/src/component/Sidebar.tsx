@@ -1,4 +1,4 @@
-import { faHome, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faAngleDown, faClipboardList } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
@@ -15,8 +15,8 @@ export default function Sidebar() {
                 <li>
                     <button>
                         <div className="drop-icon">
-                            <FontAwesomeIcon icon={faHome} />
-                            <span>Dropdown</span>
+                            <FontAwesomeIcon icon={faClipboardList} />
+                            <span>Dashboard</span>
                         </div>
                     </button>
                 </li>

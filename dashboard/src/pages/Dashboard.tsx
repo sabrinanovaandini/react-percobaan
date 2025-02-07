@@ -5,7 +5,9 @@ import Sidebar from "../component/Sidebar";
 export default function Dashboard(){
     return(
     <div className="container">
-        <Sidebar />
+        <div className="side">
+            <Sidebar />
+        </div>
         <div className="content">
             <Header />
             <Home />
