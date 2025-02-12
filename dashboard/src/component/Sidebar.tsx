@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export default function Sidebar() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
+
+    // Fungsi toggle dropdown
+    const toggleDropdown = (menu) => {
+        setOpenDropdown(openDropdown === menu ? null : menu);
+    };
 
     return (
         <div className="sidebar">
@@ -15,24 +20,81 @@ export default function Sidebar() {
                 <li>
                     <button>
                         <div className="drop-icon">
-                            <FontAwesomeIcon icon={faClipboardList} />
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faClipboardList} />
+                            </div>
                             <span>Dashboard</span>
                         </div>
                     </button>
                 </li>
                 <li>
-                    <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                    <button onClick={() => toggleDropdown("berita")}>
                         <div className="drop-icon">
-                            <FontAwesomeIcon icon={faHome} />
-                            <span>Dropdown</span>
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faHome} />
+                            </div>
+                            <span>Berita Tulisan</span>
                         </div>
-                        <FontAwesomeIcon icon={faAngleDown} />
+                        <div className="icon-s">
+                            <FontAwesomeIcon icon={faAngleDown} />
+                        </div>
                     </button>
-                    {isDropdownOpen && (
+                    {openDropdown === "berita" && (
                         <ul className="dropdown-menu">
-                            <li><button>Submenu 1</button></li>
-                            <li><button>Submenu 2</button></li>
-                            <li><button>Submenu 3</button></li>
+                            <li><button>Semua Berita</button></li>
+                            <li><button>Tambah Berita</button></li>
+                            <li><button>Kategori</button></li>
+                            <li><button>Komentar</button></li>
+                        </ul>
+                    )}
+                </li>
+                <li>
+                    <button>
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faClipboardList} />
+                            </div>
+                            <span>PPDB</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faClipboardList} />
+                            </div>
+                            <span>Program Keahlian</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button>
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faClipboardList} />
+                            </div>
+                            <span>Guru</span>
+                        </div>
+                    </button>
+                </li>
+                <li>
+                    <button onClick={() => toggleDropdown("kesiswaan")}>
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faHome} />
+                            </div>
+                            <span>Kesiswaan</span>
+                        </div>
+                        <div className="icon-s">
+                            <FontAwesomeIcon icon={faAngleDown} />
+                        </div>
+                    </button>
+                    {openDropdown === "kesiswaan" && (
+                        <ul className="dropdown-menu">
+                            <li><button>Organisasi</button></li>
+                            <li><button>Sub Organisasi</button></li>
+                            <li><button>Ekstrakurikuler</button></li>
                         </ul>
                     )}
                 </li>
