@@ -1,18 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-export default function User() {
+export default function Notification() {
     return(
         <div className="profile">
                 <label className="popup">
                     <input type="checkbox" />
                     <div tabIndex={0} className="burger">
-                        <FontAwesomeIcon icon={faUser} size="lg"/>
+                        <FontAwesomeIcon icon={faBell} size="lg"/>
                     </div>
                     <nav className="popup-window">
-                        <legend>Quick Start</legend>
+                        <legend>Notifikasi</legend>
                         <ul>
                             <li>
                                 <button>

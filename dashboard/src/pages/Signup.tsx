@@ -1,4 +1,4 @@
-export default function Login(){
+export default function Signup(){
     return(
     <div className="login">
         <form className="form">
@@ -8,7 +8,7 @@ export default function Login(){
                     <p>SMKN 2 MAGELANG</p>
                 </div>
             </div>
-            <p className="form-title">Sign in to your account</p>
+            <p className="form-title">Sign up to get new account</p>
             <div className="input-container">
                 <input placeholder="Enter email" type="email"/>
                 <span>
@@ -27,11 +27,11 @@ export default function Login(){
                 </span>
             </div>
             <button className="submit" type="submit">
-                Sign in
+                Sign up
             </button>
 
             <p className="signup-link">
-                <a href="">Lost your password ?</a>
+                <a href="">Sign in here !</a>
             </p>
         </form>
     </div>

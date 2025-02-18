@@ -44,16 +44,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #41d69d;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #2faf7e;
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
 }
 
 @media (prefers-color-scheme: light) {
@@ -194,12 +194,94 @@ button:focus-visible {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 } 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  background: transparent;
+  background: transparent;
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
 } 
 ::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+  background: rgba(128, 128, 128, 0.199); 
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 99, 99, 0.233); 
 }
 /* End Scrollbar */
+
+/* table input checkbox */
+.checkbox-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.checkbox-icon input[type="checkbox"] {
+  appearance: none; /* Hilangkan default style checkbox */
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-icon input[type="checkbox"]:checked {
+  background-color: white;
+  border-color: white;
+}
+
+.checkbox-icon input[type="checkbox"]::before {
+  content: "✔";
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.checkbox-icon input[type="checkbox"]:checked::before {
+  visibility: visible;
+}
+/* END table input checkbox */
+
+/* icon table plus, delete, edit, refresh */
+.icon-table {
+  position: relative;
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  place-items: center;
+  gap: 15px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.5);
+}
+/*  */
+.content-title {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  margin-bottom: 20px;
+}
+/*  */
+.list-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* button layout */
+.button-col {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+/* END Button Layout */

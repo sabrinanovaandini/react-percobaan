@@ -1,5 +1,4 @@
 import Card from "./Card";
-import TabelBerita from "./TabelBerita";
 
 export default function Home() {
     return (
@@ -10,8 +9,6 @@ export default function Home() {
                 <Card />
                 <Card />
             </div>
-            <h2>Manage manage how how hey whats up bro</h2>
-            <TabelBerita />
         </main>
     )
 }

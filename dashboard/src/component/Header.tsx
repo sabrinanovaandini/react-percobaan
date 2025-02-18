@@ -2,6 +2,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import User from "./User";
 import Search from "./Search";
+import Notification from "./Notification";
 
 export default function Header() {
 
@@ -12,6 +13,7 @@ export default function Header() {
             </div>
             <div className="right-icon">
                 <Search />
+                <Notification />
                 <User />
             </div>
         </header>

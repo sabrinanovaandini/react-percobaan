@@ -4,7 +4,7 @@ export default function Table({ columns, data }) {
       <div className="table-container">
         <table className="table-content">
           <thead>
-            <tr className="head-colum">
+            <tr>
               {columns.map((col, index) => (
                 <th key={index} className="border">
                   {col.label}
@@ -14,7 +14,7 @@ export default function Table({ columns, data }) {
           </thead>
           <tbody>
             {data.map((row, rowIndex) => (
-              <tr key={rowIndex} className="head-colum">
+              <tr key={rowIndex}>
                 {columns.map((col, colIndex) => (
                   <td key={colIndex} className="border">
                     {row[col.key]}
