@@ -1,16 +1,29 @@
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 export default function Signup(){
+    const [role, setRole] = useState("Role");
     return(
     <div className="login">
         <form className="form">
             <div className="form-logo">
                 <div className="logo">
-                    <img src="public/logo smea.PNG" alt="logo smkn2mgl" />
+                    <img src="/logo smea.PNG" alt="logo smkn2mgl" />
                     <p>SMKN 2 MAGELANG</p>
                 </div>
             </div>
-            <p className="form-title">Sign up to get new account</p>
+            <p className="form-title">Buat Akun Baru</p>
             <div className="input-container">
-                <input placeholder="Enter email" type="email"/>
+                <input placeholder="Masukkan Username" type="username"/>
+                <span>
+                <FontAwesomeIcon icon={faUser}/>
+                </span>
+            </div>
+            <div className="input-container">
+                <input placeholder="Masukkan email" type="email"/>
                 <span>
                     <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -18,7 +31,7 @@ export default function Signup(){
                 </span>
             </div>
             <div className="input-container">
-                <input placeholder="Enter password" type="password"/>
+                <input placeholder="Masukkan password" type="password"/>
                 <span>
                     <svg stroke="currentColor" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -26,14 +39,63 @@ export default function Signup(){
                     </svg>
                 </span>
             </div>
+            <div className="input-container">
+                <Dropdown options={["Admin", "Jurnalis"]} selected={role} onSelect={setRole} />
+            </div>
             <button className="submit" type="submit">
-                Sign up
+                Buat Akun
             </button>
 
             <p className="signup-link">
-                <a href="">Sign in here !</a>
+                <Link to="/login">Log in disini !</Link>
             </p>
         </form>
     </div>
     )
+}
+
+function Dropdown({ options, selected, onSelect }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="custom-dropdown" onClick={() => setIsOpen(!isOpen)} 
+            style=
+            {{ 
+                backgroundColor: "#fff",
+                color: "#6B7280",
+                padding: "1rem",
+                paddingRight: "3rem",
+                margin: "8px 0",
+                height: "auto",
+                fontSize: "0.875rem",
+                width: "350px",
+                borderRadius: "0.5rem",
+                borderColor: "#e5e7eb",
+                boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" 
+            }}
+        >
+            <div className="dropdown-selected">
+                {selected}
+                <span>
+                    <FontAwesomeIcon icon={faChevronDown} className={`dropdown-icon ${isOpen ? "open" : ""}`}/>
+                </span>
+            </div>
+            {isOpen && (
+                <ul className="dropdown-options"
+                style=
+                {{  
+                    color: "#6B7280",
+                    borderRadius: "0.5rem",
+                    boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)" 
+                }}
+                >
+                    {options.map((option, index) => (
+                        <li key={index} onClick={() => { onSelect(option); setIsOpen(false); }}>
+                            {option}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 }

@@ -1,0 +1,29 @@
+import { useState } from "react";
+
+export default function DialogTautan({ isOpen, onClose, onSubmit }) {
+  const [nama, setNama] = useState("");
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="popup-overlay">
+      <div className="popup-form">
+        <h3>Tambah Tautan Baru</h3>
+        <form style={{ marginTop: "20px" }}>
+          <div className="form-group">
+            <label>Tautan/URL:</label>
+              <input type="text" placeholder="Masukan URL" value={nama} onChange={(e) => setNama(e.target.value)}/>
+          </div>
+          <div className="form-group">
+            <label>Keterangan:</label>
+              <input type="text" placeholder="Masukan Keterangan" value={nama} onChange={(e) => setNama(e.target.value)}/>
+          </div>
+          <div className="button-col">
+            <button type="button" onClick={onClose}>Batal</button>
+            <button type="submit" onClick={() => onSubmit(nama)}>Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

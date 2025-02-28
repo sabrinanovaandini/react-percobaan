@@ -1,12 +1,17 @@
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Editor } from "@tinymce/tinymce-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Tambahberita() {
     const [isi, setIsi] = useState("");
+    const [status, setStatus] = useState("Diterbitkan");
+    const [akses, setAkses] = useState("Publik");
+    const [komentar, setKomentar] = useState("Diizinkan");
 
-    return(
+    return (
         <main className="main">
             <div className="content-title">
                 <h2>Tambah Berita</h2>
@@ -15,36 +20,36 @@ export default function Tambahberita() {
                 <div className="word">
                     <form action="">
                         <input type="text" placeholder="Tulis Judul Berita disini" className="input-lg"/>
-                    <Editor
-                        apiKey="your-tinymce-api-key"
-                        value={isi}
-                        onEditorChange={(content) => setIsi(content)}
-                        init={{
-                            height: 400,
-                            menubar: true,
-                            plugins: [
-                                "advlist autolink lists link image charmap print preview anchor",
-                                "searchreplace visualblocks code fullscreen",
-                                "insertdatetime media table paste code help wordcount",
-                            ],
-                            toolbar:
-                                "undo redo | formatselect | " +
-                                "bold italic underline | alignleft aligncenter alignright alignjustify | " +
-                                "bullist numlist outdent indent | " +
-                                "image media table link | " +
-                                "preview fullscreen",
-                        }}
-                    />
+                        <Editor
+                            apiKey="your-tinymce-api-key"
+                            value={isi}
+                            onEditorChange={(content) => setIsi(content)}
+                            init={{
+                                height: 400,
+                                menubar: true,
+                                plugins: [
+                                    "advlist autolink lists link image charmap print preview anchor",
+                                    "searchreplace visualblocks code fullscreen",
+                                    "insertdatetime media table paste code help wordcount",
+                                ],
+                                toolbar:
+                                    "undo redo | formatselect | " +
+                                    "bold italic underline | alignleft aligncenter alignright alignjustify | " +
+                                    "bullist numlist outdent indent | " +
+                                    "image media table link | " +
+                                    "preview fullscreen",
+                            }}
+                        />
                     </form>
                 </div>
                 <div className="ct-addnews">
                     <div className="c-category">
                         <div className="content-title">
                             <h3>Kategori Berita</h3>
-                            <div className="icon-table">
+                            <Link className="icon-table" to="/category">
                                 <FontAwesomeIcon icon={faPlusSquare} />
                                 <p>Tambah Kategori</p>
-                            </div>
+                            </Link>
                         </div>
                         <form action="" className="list-card">
                             <div className="checkbox-icon">
@@ -69,30 +74,21 @@ export default function Tambahberita() {
                             <div className="publikasi">
                                 <div className="selected">
                                     <p>Status</p>
-                                    <select>
-                                        <option value="diterbitkan">Diterbitkan</option>
-                                        <option value="Draft">Draft</option>
-                                    </select>
+                                    <Dropdown options={["Diterbitkan", "Draft"]} selected={status} onSelect={setStatus} />
                                 </div>
                                 <div className="selected">
                                     <p>Akses</p>
-                                    <select>
-                                        <option value="Publik">Publik</option>
-                                        <option value="Private">Private</option>
-                                    </select>
+                                    <Dropdown options={["Publik", "Private"]} selected={akses} onSelect={setAkses} />
                                 </div>
                             </div>
                             <div className="publikasi-2">
                                 <div className="selected">
                                     <p>Komentar</p>
-                                    <select>
-                                        <option value="Dizinkan">Diizinkan</option>
-                                        <option value="Tidak">Tidak</option>
-                                    </select>
+                                    <Dropdown options={["Diizinkan", "Tidak"]} selected={komentar} onSelect={setKomentar} />
                                 </div>
                                 <div className="selected">
                                     <p>File Foto</p>
-                                    <input type="file" />
+                                    <input type="file" className="custom-file-input" />
                                 </div>
                             </div>
                         </form>
@@ -103,7 +99,28 @@ export default function Tambahberita() {
                     <button>Simpan</button>
                 </div>
             </div>
-
         </main>
-    )
+    );
+}
+
+function Dropdown({ options, selected, onSelect }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="custom-dropdown" onClick={() => setIsOpen(!isOpen)}>
+            <div className="dropdown-selected">
+                {selected}
+                <FontAwesomeIcon icon={faChevronDown} className={`dropdown-icon ${isOpen ? "open" : ""}`} />
+            </div>
+            {isOpen && (
+                <ul className="dropdown-options">
+                    {options.map((option, index) => (
+                        <li key={index} onClick={() => { onSelect(option); setIsOpen(false); }}>
+                            {option}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
 }

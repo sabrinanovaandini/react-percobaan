@@ -19,6 +19,15 @@ import ProfileSchool from './pages/ProfileSchool';
 import VMT from './pages/VMT';
 import Profile from './pages/Profile';
 import StructureOrganization from './pages/StructureOrganization';
+import Editnews from './pages/Editnews';
+import DashJurnalis from './pages/DashJurnalis';
+import ProfileJurnalis from './pages/ProfileJurnalis';
+import AllnewsJur from './pages/Allnewsjur';
+import AddnewsJur from './pages/Addnewsjur';
+import CategoryJur from './pages/CategoryJur';
+import ComentaryJur from './pages/ComentaryJur';
+import Setpengguna from './pages/Setpengguna';
+import HightlightBeranda from './pages/Hightlightberanda';
 function App() {
 
   return (
@@ -28,6 +37,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/highlight-beranda' element={<HightlightBeranda />} />
         <Route path="/allnews" element={<Allnews />} />
         <Route path="/addnews" element={<Addnews />} />
         <Route path="/category" element={<Category />} />
@@ -42,6 +52,16 @@ function App() {
         <Route path="/profileschool" element={<ProfileSchool />} />
         <Route path="/vmt" element={<VMT />} />
         <Route path="/struktur-organisasi" element={<StructureOrganization />} />
+        <Route path="/set-pengguna" element={<Setpengguna />} />
+        
+        <Route path="/editnews" element={<Editnews />} />
+        {/* bagian jurnalis */}
+        <Route path='/dashjurnalis' element={<DashJurnalis />} />
+        <Route path="/profilejurnalis" element={<ProfileJurnalis />} />
+        <Route path="/allnewsjur" element={<AllnewsJur />} />
+        <Route path="/addnewsjur" element={<AddnewsJur />} />
+        <Route path="/categoryjur" element={<CategoryJur />} />
+        <Route path="/comentaryjur" element={<ComentaryJur />} />
       </Routes>
     </BrowserRouter>
   )

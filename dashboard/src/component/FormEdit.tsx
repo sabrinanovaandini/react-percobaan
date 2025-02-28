@@ -28,7 +28,7 @@ export default function FormEdit({ fields, title, onSubmit }) {
 
   return (
     <div className="form-container">
-      <div className="form-title">
+      <div className="formedit-title">
         <h2>{title}</h2>
       </div>
       <form onSubmit={handleSubmit}>

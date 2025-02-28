@@ -4,14 +4,12 @@ import Sidebar from "../component/Sidebar";
 
 export default function Dashboard(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <Home />
         </div>
-    </div>
+    </>
     )
 }

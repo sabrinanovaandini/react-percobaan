@@ -15,20 +15,16 @@ export default function User() {
                         <legend>Quick Start</legend>
                         <ul>
                             <li>
-                                <button>
-                                    <FontAwesomeIcon icon={faCircleUser} />
-                                    <span>Profile</span>
-                                </button>
                                 <Link to="/profile">
                                     <FontAwesomeIcon icon={faCircleUser} />
                                     <span>Profile</span>
                                 </Link>
                             </li>
                             <li>
-                                <button>
+                                <Link to="/login">
                                     <FontAwesomeIcon icon={faRightFromBracket} />
                                     <span>Log out</span>
-                                </button>
+                                </Link>
                             </li>
                         </ul>
                     </nav>

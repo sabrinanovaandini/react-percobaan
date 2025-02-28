@@ -1,9 +1,10 @@
-import { faHome, faAngleDown, faClipboardList } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faClipboardList, faChevronLeft, faEnvelope, faLink, faSchool, faPeopleGroup, faNewspaper, faChartSimple, faGraduationCap, faUserGear, faBullhorn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
+    const [isOpen, setIsOpen] = useState(true);
     const [openDropdown, setOpenDropdown] = useState(null);
 
     const toggleDropdown = (menu) => {
@@ -11,19 +12,32 @@ export default function Sidebar() {
     };
 
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
             <div className="logo">
                 <img src="public/logo smea.PNG" alt="logo smkn2mgl" />
-                <p>SMKN 2 MAGELANG</p>
+                {isOpen && <p>SMKN 2 MAGELANG</p>}
+                <div className="close-icon" onClick={() => setIsOpen(!isOpen)}>
+                    <FontAwesomeIcon icon={faChevronLeft} size="lg" style={{ color: "white" }}/>
+                </div>
             </div>
             <ul>
                 <li>
                     <Link to="/dashboard">
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faClipboardList} />
+                                <FontAwesomeIcon icon={faChartSimple} size="lg"/>
                             </div>
-                            <span>Dashboard</span>
+                            {isOpen && <span>Dashboard</span>}
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/highlight-beranda">
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faBullhorn} size="lg"/>
+                            </div>
+                            {isOpen && <span>Highlight Beranda</span>}
                         </div>
                     </Link>
                 </li>
@@ -31,13 +45,15 @@ export default function Sidebar() {
                     <Link onClick={() => toggleDropdown("berita")}>
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faHome} />
+                                <FontAwesomeIcon icon={faNewspaper} size="lg"/>
                             </div>
-                            <span>Berita Tulisan</span>
+                            {isOpen && <span>Berita Tulisan</span>}
                         </div>
+                        {isOpen && 
                         <div className="icon-s">
-                            <FontAwesomeIcon icon={faAngleDown} />
+                            <FontAwesomeIcon icon={faAngleDown} size="lg"/>
                         </div>
+                        }
                     </Link>
                     {openDropdown === "berita" && (
                         <ul className="dropdown-menu">
@@ -52,9 +68,9 @@ export default function Sidebar() {
                     <Link to="/message">
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faClipboardList} />
+                                <FontAwesomeIcon icon={faEnvelope} size="lg"/>
                             </div>
-                            <span>Pesan</span>
+                            {isOpen && <span>Pesan</span>}
                         </div>
                     </Link>
                 </li>
@@ -62,9 +78,9 @@ export default function Sidebar() {
                     <Link to="/tautan">
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faClipboardList} />
+                                <FontAwesomeIcon icon={faLink} size="lg"/>
                             </div>
-                            <span>Tautan/Link terkait</span>
+                            {isOpen && <span>Tautan/Link terkait</span>}
                         </div>
                     </Link>
                 </li>
@@ -72,9 +88,9 @@ export default function Sidebar() {
                     <Link to="/ppdb">
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faClipboardList} />
+                                <FontAwesomeIcon icon={faClipboardList} size="lg"/>
                             </div>
-                            <span>PPDB</span>
+                            {isOpen && <span>PPDB</span>}
                         </div>
                     </Link>
                 </li>
@@ -82,9 +98,9 @@ export default function Sidebar() {
                     <Link to="/program-keahlian">
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faClipboardList} />
+                                <FontAwesomeIcon icon={faGraduationCap} size="lg"/>
                             </div>
-                            <span>Program Keahlian</span>
+                            {isOpen && <span>Program Keahlian</span>}
                         </div>
                     </Link>
                 </li>
@@ -92,13 +108,15 @@ export default function Sidebar() {
                     <Link onClick={() => toggleDropdown("kesiswaan")}>
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faHome} />
+                                <FontAwesomeIcon icon={faPeopleGroup} size="lg"/>
                             </div>
-                            <span>Kesiswaan</span>
+                            {isOpen && <span>Kesiswaan</span>}
                         </div>
+                        {isOpen && 
                         <div className="icon-s">
-                            <FontAwesomeIcon icon={faAngleDown} />
+                            <FontAwesomeIcon icon={faAngleDown} size="lg"/>
                         </div>
+                        }
                     </Link>
                     {openDropdown === "kesiswaan" && (
                         <ul className="dropdown-menu">
@@ -112,21 +130,33 @@ export default function Sidebar() {
                     <Link onClick={() => toggleDropdown("info-sekolah")}>
                         <div className="drop-icon">
                             <div className="icon-s">
-                                <FontAwesomeIcon icon={faHome} />
+                                <FontAwesomeIcon icon={faSchool} size="lg"/>
                             </div>
-                            <span>Info Sekolah</span>
+                            {isOpen && <span>Info Sekolah</span>}
                         </div>
+                        {isOpen && 
                         <div className="icon-s">
-                            <FontAwesomeIcon icon={faAngleDown} />
+                            <FontAwesomeIcon icon={faAngleDown} size="lg"/>
                         </div>
+                        }
                     </Link>
                     {openDropdown === "info-sekolah" && (
                         <ul className="dropdown-menu">
-                        <li><Link to="/profileschool">Profil Sekolah</Link></li>
+                            <li><Link to="/profileschool">Profil Sekolah</Link></li>
                             <li><Link to="/vmt">Visi, Misi, Tujuan</Link></li>
                             <li><Link to="/struktur-organisasi">Struktur organisasi</Link></li>
                         </ul>
                     )}
+                </li>
+                <li>
+                    <Link to="/set-pengguna">
+                        <div className="drop-icon">
+                            <div className="icon-s">
+                                <FontAwesomeIcon icon={faUserGear} size="lg"/>
+                            </div>
+                            {isOpen && <span>Pengaturan Pengguna</span>}
+                        </div>
+                    </Link>
                 </li>
             </ul>
         </div>

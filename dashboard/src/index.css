@@ -15,11 +15,11 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: black;
+  text-decoration: none;
 }
 a:hover {
-  color: #535bf2;
+  /* color: #535bf2; */
 }
 
 body {
@@ -61,9 +61,9 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
+  /* a:hover {
     color: #747bff;
-  }
+  } */
   button {
     background-color: #f9f9f9;
   }
@@ -72,7 +72,7 @@ button:focus-visible {
 /* Logo Sekolah */
 .logo {
   position: relative;
-  width: fit-content;
+  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
@@ -92,6 +92,42 @@ button:focus-visible {
   color: #213547;
   line-height: normal;
 }
+
+/* Responsif untuk tablet */
+@media (max-width: 1025px) {
+  .logo {
+    height: 50px; /* Sedikit lebih kecil */
+    gap: 5px;
+  }
+  
+  .logo img {
+    width: 40px; /* Perkecil logo */
+  }
+
+  .logo p {
+    font-size: 0.9rem; /* Perkecil teks */
+  }
+}
+
+/* Responsif untuk HP */
+@media (max-width: 500px) {
+  /* .logo {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  } */
+
+  .logo img {
+    position: relative;
+    width: 35px;
+    height: auto;
+  }
+
+  .logo p {
+    display: none;
+  }
+}
+
 /* END Logo Sekolah */
 
 /* Form Login*/
@@ -106,7 +142,7 @@ button:focus-visible {
   background-color: #fff;
   display: block;
   padding: 1rem;
-  max-width: 350px;
+  width: 350px;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
@@ -142,7 +178,7 @@ button:focus-visible {
   padding-right: 3rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  width: 250px;
+  width: 350px;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
@@ -263,6 +299,9 @@ button:focus-visible {
   border-radius: 15px;
   box-shadow: 0px 4px 10px -5px rgba(0, 0, 0, 0.5);
 }
+.icon-table a {
+  color: black;
+}
 /*  */
 .content-title {
   position: relative;
@@ -285,3 +324,66 @@ button:focus-visible {
   gap: 10px;
 }
 /* END Button Layout */
+
+/* DASHBOARD / Home  */
+.second {
+  display: flex;
+}
+.lima {
+  width: 50%;
+}
+
+
+/* popup detail berita */
+.popup-detail {
+  height: 500px;
+  overflow-x: auto;
+  margin: 20px;
+  text-align: justify;
+}
+
+.img-berita {
+  width: 100%;
+  height: 200px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  box-sizing: border-box;
+  object-fit: cover;
+}
+
+.img-berita img {
+  width: 100%; /* Agar gambar memenuhi kontainer */
+  max-width: 300px; /* Batasi ukuran maksimum */
+  height: auto; /* Pertahankan aspek rasio */
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.title-berita {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+/* END popup detail berita */
+
+/* Popup detail komentar */
+.popup-komentar {
+  text-align: left;
+  margin: 20px;
+}
+.info-komentar {
+  display: flex;
+  justify-content: space-between;
+  color: #888;
+  margin-bottom: 10px;
+}
+.balas-komentar {
+  margin-top: 20px;
+}
+.balas-komentar textarea{
+  width: 100%;
+}
+/* End Popup detail komentar */
