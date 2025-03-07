@@ -4,14 +4,12 @@ import TabelPPDB from "../component/TabelPpdb";
 
 export default function PPDB(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelPPDB />
         </div>
-    </div>
+    </>
     )
 }

@@ -72,16 +72,14 @@ export default function TabelBerita() {
       <div className="checkbox-icon">
         <input type="checkbox" />
         <FontAwesomeIcon 
-          icon={faEye} 
-          style={{ color: "green", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDetailClick(item)} // Tambahkan event untuk popup detail
-        />
-        <FontAwesomeIcon 
           icon={faTrashCan} 
           style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDeleteClick(item.title)}
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            handleDeleteClick(item.title);
+          }} 
         />
-        <Link to="/editnews">
+        <Link to="/editnews" onClick={(e) => e.stopPropagation()}>
           <FontAwesomeIcon icon={faEdit} style={{ color: "skyblue", marginLeft: "10px" }} />
         </Link>
       </div>
@@ -122,7 +120,7 @@ export default function TabelBerita() {
           </Link>
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete (berita tertentu) untuk modal konfirmasi */}
       <PopupDelete 

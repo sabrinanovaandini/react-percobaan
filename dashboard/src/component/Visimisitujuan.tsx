@@ -134,7 +134,7 @@ export default function VisiMisiTujuan() {
                 </div>
             </div>
             <Table columns={columns} data={misiDataWithIcons} />
-
+            
             <div className="content-title">
                 <h2>Tujuan</h2>
                 <div className="icon-table">

@@ -4,14 +4,12 @@ import SideJurnalis from "../component/SideJurnalis";
 
 export default function ProfileJurnalis(){
     return(
-    <div className="container">
-        <div className="side">
-            <SideJurnalis />
-        </div>
+    <>
+        <SideJurnalis />
         <div className="content">
             <HeadJurnalis />
             <ProfilJurnalis />
         </div>
-    </div>
+    </>
     )
 }

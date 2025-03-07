@@ -3,7 +3,7 @@ export default function DeletePopup({ isOpen, onClose, onConfirm }) {
   
     return (
       <div className="popup-overlay">
-        <div className="popup-box">
+        <div className="popup-del">
           <h3>Konfirmasi Hapus</h3>
           <p>Apakah Anda yakin ingin menghapus data ini?</p>
           <div className="popup-buttons">

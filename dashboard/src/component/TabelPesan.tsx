@@ -63,14 +63,12 @@ export default function TabelPesan() {
       <div className="checkbox-icon">
         <input type="checkbox" />
         <FontAwesomeIcon 
-          icon={faEye} 
-          style={{ color: "green", cursor: "pointer", marginLeft: "10px" }}
-          onClick={() => handleDetailClick(item)}
-        />
-        <FontAwesomeIcon 
           icon={faTrashCan} 
           style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDeleteClick("Pesan dari", item.writer)} 
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            handleDeleteClick("Pesan dari", item.writer);
+          }} 
         />
       </div>
     ),
@@ -98,7 +96,7 @@ export default function TabelPesan() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete dengan label dinamis */}
       <PopupDelete 

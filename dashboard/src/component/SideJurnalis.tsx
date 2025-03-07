@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function SideJurnalis() {
+    const [isOpen, setIsOpen] = useState(true);
     const [openDropdown, setOpenDropdown] = useState(null);
 
     const toggleDropdown = (menu) => {
@@ -11,13 +12,13 @@ export default function SideJurnalis() {
     };
 
     return (
-        <div className="sidebar">
+        <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
             <div className="logo">
                 <img src="public/logo smea.PNG" alt="logo smkn2mgl" />
-                <p>SMKN 2 MAGELANG</p>
-                {/* <div className="close-icon">
-                    <FontAwesomeIcon icon={faChevronLeft} size="lg" style={{ color: "black" }}/>
-                </div> */}
+                {isOpen && <p>SMKN 2 MAGELANG</p>}
+                <div className="close-icon" onClick={() => setIsOpen(!isOpen)}>
+                    <FontAwesomeIcon icon={faChevronLeft} size="lg" style={{ color: "white" }}/>
+                </div>
             </div>
             <ul>
                 <li>

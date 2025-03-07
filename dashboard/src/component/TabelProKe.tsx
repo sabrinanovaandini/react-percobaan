@@ -64,16 +64,21 @@ export default function TabelProKe() {
       <div className="checkbox-icon">
         <input type="checkbox" />
         <FontAwesomeIcon 
-          icon={faEye} 
-          style={{ color: "green", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDetailClick(item)} // Tambahkan event untuk popup detail
-        />
-        <FontAwesomeIcon 
           icon={faTrashCan} 
           style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDeleteClick(item.programkeahlian)}
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            handleDeleteClick(item.programkeahlian);
+          }} 
         />
-        <FontAwesomeIcon icon={faEdit} style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer"  }} onClick={() => setShowAddPopup(true)} />
+        <FontAwesomeIcon 
+          icon={faEdit} 
+          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer"  }} 
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            setShowAddPopup(true);
+          }}
+        />
       </div>
     ),
   }));
@@ -127,7 +132,7 @@ export default function TabelProKe() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete untuk modal konfirmasi */}
       <PopupDelete 

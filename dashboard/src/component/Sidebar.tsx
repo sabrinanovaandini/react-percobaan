@@ -1,11 +1,19 @@
 import { faAngleDown, faClipboardList, faChevronLeft, faEnvelope, faLink, faSchool, faPeopleGroup, faNewspaper, faChartSimple, faGraduationCap, faUserGear, faBullhorn } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
-    const [openDropdown, setOpenDropdown] = useState(null);
+    const location = useLocation(); // Untuk mendapatkan path saat ini
+    const [openDropdown, setOpenDropdown] = useState(() => {
+        // Saat pertama kali dibuka, tentukan dropdown mana yang harus terbuka
+        const path = location.pathname;
+        if (path.includes("/allnews") || path.includes("/addnews") || path.includes("/category") || path.includes("/comentary")) return "berita";
+        if (path.includes("/organization") || path.includes("/sub-organization") || path.includes("/extracurricular")) return "kesiswaan";
+        if (path.includes("/profileschool") || path.includes("/vmt") || path.includes("/struktur-organisasi")) return "info-sekolah";
+        return null;
+    });
 
     const toggleDropdown = (menu) => {
         setOpenDropdown(openDropdown === menu ? null : menu);
@@ -22,7 +30,7 @@ export default function Sidebar() {
             </div>
             <ul>
                 <li>
-                    <Link to="/dashboard">
+                    <Link to="/dashboard" className={location.pathname === "/dashboard" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faChartSimple} size="lg"/>
@@ -32,7 +40,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/highlight-beranda">
+                    <Link to="/highlight-beranda" className={location.pathname === "/highlight-beranda" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faBullhorn} size="lg"/>
@@ -57,15 +65,15 @@ export default function Sidebar() {
                     </Link>
                     {openDropdown === "berita" && (
                         <ul className="dropdown-menu">
-                            <li><Link to="/allnews">Semua Berita</Link></li>
-                            <li><Link to="/addnews">Tambah Berita</Link></li>
-                            <li><Link to="/category">Kategori</Link></li>
-                            <li><Link to="/comentary">Komentar</Link></li>
+                            <li><Link to="/allnews" className={location.pathname === "/allnews" ? "active" : ""}>Semua Berita</Link></li>
+                            <li><Link to="/addnews" className={location.pathname === "/addnews" ? "active" : ""}>Tambah Berita</Link></li>
+                            <li><Link to="/category" className={location.pathname === "/category" ? "active" : ""}>Kategori</Link></li>
+                            <li><Link to="/comentary" className={location.pathname === "/comentary" ? "active" : ""}>Komentar</Link></li>
                         </ul>
                     )}
                 </li>
                 <li>
-                    <Link to="/message">
+                    <Link to="/message" className={location.pathname === "/message" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faEnvelope} size="lg"/>
@@ -75,7 +83,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/tautan">
+                    <Link to="/tautan"  className={location.pathname === "/tautan" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faLink} size="lg"/>
@@ -85,7 +93,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/ppdb">
+                    <Link to="/ppdb"  className={location.pathname === "/ppdb" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faClipboardList} size="lg"/>
@@ -95,7 +103,7 @@ export default function Sidebar() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/program-keahlian">
+                    <Link to="/program-keahlian"  className={location.pathname === "/program-keahlian" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faGraduationCap} size="lg"/>
@@ -120,9 +128,9 @@ export default function Sidebar() {
                     </Link>
                     {openDropdown === "kesiswaan" && (
                         <ul className="dropdown-menu">
-                            <li><Link to="/organization">Organisasi</Link></li>
-                            <li><Link to="/sub-organization">Sub Organisasi</Link></li>
-                            <li><Link to="/extracurricular">Ekstrakurikuler</Link></li>
+                            <li><Link to="/organization"  className={location.pathname === "/organization" ? "active" : ""}>Organisasi</Link></li>
+                            <li><Link to="/sub-organization" className={location.pathname === "/sub-organization" ? "active" : ""}>Sub Organisasi</Link></li>
+                            <li><Link to="/extracurricular" className={location.pathname === "/extracurricular" ? "active" : ""}>Ekstrakurikuler</Link></li>
                         </ul>
                     )}
                 </li>
@@ -142,14 +150,14 @@ export default function Sidebar() {
                     </Link>
                     {openDropdown === "info-sekolah" && (
                         <ul className="dropdown-menu">
-                            <li><Link to="/profileschool">Profil Sekolah</Link></li>
-                            <li><Link to="/vmt">Visi, Misi, Tujuan</Link></li>
-                            <li><Link to="/struktur-organisasi">Struktur organisasi</Link></li>
+                            <li><Link to="/profileschool" className={location.pathname === "/profileschool" ? "active" : ""}>Profil Sekolah</Link></li>
+                            <li><Link to="/vmt" className={location.pathname === "/vmt" ? "active" : ""}>Visi, Misi, Tujuan</Link></li>
+                            <li><Link to="/struktur-organisasi" className={location.pathname === "/struktur-organisasi" ? "active" : ""}>Struktur organisasi</Link></li>
                         </ul>
                     )}
                 </li>
                 <li>
-                    <Link to="/set-pengguna">
+                    <Link to="/set-pengguna" className={location.pathname === "/set-pengguna" ? "active" : ""}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faUserGear} size="lg"/>

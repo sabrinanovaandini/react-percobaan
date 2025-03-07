@@ -4,14 +4,12 @@ import TabelKomentar from "../component/TabelKomentar";
 
 export default function Comentary(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelKomentar />
         </div>
-    </div>
+    </>
     )
 }

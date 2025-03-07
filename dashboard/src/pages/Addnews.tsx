@@ -4,14 +4,12 @@ import Tambahberita from "../component/Tambahberita";
 
 export default function Addnews() {
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <Tambahberita />
         </div>
-    </div>
+    </>
     )
 }

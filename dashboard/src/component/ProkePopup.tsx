@@ -1,9 +1,16 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function ProkePopup({ isOpen, onClose, proke }) {
     if (!isOpen || !proke) return null;
   
     return (
       <div className="popup-overlay">
         <div className="popup-box">
+            <button onClick={onClose} className="btn-close">
+                <FontAwesomeIcon icon={faXmark} size="lg"/>
+            </button>
+            
             <div className="popup-detail">
                 <div className="img-berita">
                     {proke.gambar} 
@@ -13,7 +20,6 @@ export default function ProkePopup({ isOpen, onClose, proke }) {
                 </div>
                 <p>{proke.content}</p>
             </div>
-            <button onClick={onClose}>Tutup</button>
         </div>
       </div>
     );

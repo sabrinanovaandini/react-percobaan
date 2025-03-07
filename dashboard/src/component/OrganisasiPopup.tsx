@@ -1,3 +1,5 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 export default function OrganisasiPopup({ isOpen, onClose, organisasi }) {
@@ -6,18 +8,18 @@ export default function OrganisasiPopup({ isOpen, onClose, organisasi }) {
   return (
     <div className="popup-overlay">
       <div className="popup-box">
-        <h2>Detail Organisasi</h2>
-        <div className="popup-content">
-          <img 
-            src={organisasi.gambar} 
-            alt={organisasi.organisasi} 
-            className="popup-image"
-          />
-          <p><strong>Nama:</strong> {organisasi}</p>
-          <p><strong>Deskripsi:</strong> {organisasi.content || "ga muncul??"}</p>
-        </div>
-        <div className="popup-footer">
-          <button className="close-button" onClick={onClose}>Tutup</button>
+        <button onClick={onClose} className="btn-close">
+            <FontAwesomeIcon icon={faXmark} size="lg"/>
+        </button>
+        
+        <div className="popup-detail">
+          <div className="img-berita">
+                    {organisasi.gambar} 
+          </div>
+          <div className="title-berita">
+          <h2>{organisasi.organisasi}</h2> 
+          </div>
+          <p>{organisasi.content}</p>
         </div>
       </div>
     </div>

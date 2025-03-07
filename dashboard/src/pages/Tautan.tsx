@@ -4,14 +4,12 @@ import TabelTautan from "../component/TabelTautan";
 
 export default function Tautan(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelTautan />
         </div>
-    </div>
+    </>
     )
 }

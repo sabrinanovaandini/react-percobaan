@@ -9,7 +9,7 @@ import DeletePopup from "./DeletePopup";
 
 const columns = [
   { label: <div className="checkbox-icon"><input type="checkbox"/></div>, key: "icon" },
-  // { label: "Gambar", key: "gambar" },
+  { label: "Gambar", key: "gambar" },
   { label: "Status", key: "status" },
   { label: "Nama", key: "nama" },
   { label: "Jabatan", key: "jabatan" },
@@ -17,55 +17,55 @@ const columns = [
 
 const rawData = [
   {
-    gambar: "/public/struktur/kepala sekolah.jpg", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Pimpinan Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Kepala Sekolah SMK Negeri 2 Magelang", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Wakil Kepala Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Waka Bidang Kurikulum", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,  
     status: "Wakil Kepala Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Waka Bidang Kesiswaan", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Wakil Kepala Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Waka Bidang Sarpras", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Wakil Kepala Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Waka Bidang Humas dan Industri", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Ketua Program Studi Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Ketua Program Studi Akuntansi dan Keuangan Lembaga", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,  
     status: "Ketua Program Studi Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Ketua Program Studi Manajemen Perkantoran dan Keuangan Lembaga", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Ketua Program Studi Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Ketua Program Studi Pengembangan Perangkat Lunak dan Gim", 
   },
   {
-    gambar: "/", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
     status: "Ketua Program Studi Sekolah", 
     nama: "Kurniawan Basuki, S.Pd.,M.T", 
     jabatan: "Ketua Program Studi Pemasaran", 
@@ -139,7 +139,8 @@ export default function TabelStrukturOrganisasi() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+
       <PopupDelete
         show={showPopup}
         label="Struktur Organisasi"

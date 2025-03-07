@@ -1,9 +1,16 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function DetailPopup({ isOpen, onClose, berita }) {
     if (!isOpen || !berita) return null;
   
     return (
       <div className="popup-overlay">
         <div className="popup-box">
+            <button onClick={onClose} className="btn-close">
+                <FontAwesomeIcon icon={faXmark} size="lg"/>
+            </button>
+
             <div className="popup-detail">
                 <div className="img-berita">
                     {berita.gambar} 
@@ -14,7 +21,6 @@ export default function DetailPopup({ isOpen, onClose, berita }) {
                 </div>
                 <p>{berita.content}</p>
             </div>
-            <button onClick={onClose}>Tutup</button>
         </div>
       </div>
     );

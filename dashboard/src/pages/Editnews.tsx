@@ -4,14 +4,12 @@ import Sidebar from "../component/Sidebar";
 
 export default function Editnews() {
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <Editberita />
         </div>
-    </div>
+    </>
     )
 }

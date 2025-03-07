@@ -8,6 +8,11 @@ import DialogSubOrganisasi from "./DialogSubOrganisasi";
 import DeletePopup from "./DeletePopup";
 import SuborPopup from "./SuborPopup";
 
+const columns = [
+  { label: <div className="checkbox-icon"><input type="checkbox" /></div>, key: "icon" },
+  { label: "Sub Organisasi", key: "suborganisasi" },
+];
+
 export default function TabelSubOrganisasi() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedSubOrg, setSelectedSubOrg] = useState("");
@@ -42,11 +47,6 @@ export default function TabelSubOrganisasi() {
     setShowDetailPopup(false);
     setSelectedSubor(null);
   };
-
-  const columns = [
-    { label: <div className="checkbox-icon"><input type="checkbox" /></div>, key: "icon" },
-    { label: "Sub Organisasi", key: "suborganisasi" },
-  ];
 
   const rawData = [
     { 
@@ -86,20 +86,21 @@ export default function TabelSubOrganisasi() {
     icon: (
       <div className="checkbox-icon">
         <input type="checkbox" />
-        <FontAwesomeIcon
-          icon={faEye}
-          style={{ color: "green", cursor: "pointer", marginLeft: "10px" }}
-          onClick={() => handleDetailClick(item)}
+        <FontAwesomeIcon 
+          icon={faTrashCan} 
+          style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            handleDeleteClick(item.suborganisasi);
+          }} 
         />
-        <FontAwesomeIcon
-          icon={faTrashCan}
-          style={{ color: "red", cursor: "pointer", marginLeft: "10px" }}
-          onClick={() => handleDeleteClick(item.suborganisasi)}
-        />
-        <FontAwesomeIcon
-          icon={faEdit}
-          style={{ color: "skyblue", cursor: "pointer", marginLeft: "10px" }}
-          onClick={() => setShowAddPopup(true)}
+        <FontAwesomeIcon 
+          icon={faEdit} 
+          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer"  }} 
+          onClick={(e) => {
+            e.stopPropagation(); // Mencegah event bubbling
+            setShowAddPopup(true);
+          }}
         />
       </div>
     ),
@@ -144,8 +145,7 @@ export default function TabelSubOrganisasi() {
           />
         </div>
       </div>
-
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
       {/* Popup Konfirmasi Hapus */}
       <PopupDelete

@@ -4,14 +4,12 @@ import TabelEkstrakurikuler from "../component/TabelEkstrakurikuler";
 
 export default function Extracurricular(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelEkstrakurikuler />
         </div>
-    </div>
+    </>
     )
 }

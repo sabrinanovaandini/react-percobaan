@@ -4,14 +4,12 @@ import TabelKategori from "../component/TabelKategori";
 
 export default function Category(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelKategori />
         </div>
-    </div>
+    </>
     )
 }

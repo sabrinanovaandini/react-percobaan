@@ -2,7 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-export default function DialogProKe({ isOpen, onClose, onSubmit }) {
+export default function DialogHighlight({ isOpen, onClose, onSubmit }) {
   const [nama, setNama] = useState("");
 
   if (!isOpen) return null;
@@ -13,20 +13,24 @@ export default function DialogProKe({ isOpen, onClose, onSubmit }) {
         <button onClick={onClose} className="btn-close">
             <FontAwesomeIcon icon={faXmark} size="lg"/>
         </button>
-        
-        <h3>Form Program Keahlian Baru</h3>
+            
+        <h3>Form Highlight/Slider Beranda</h3>
         <form style={{ marginTop: "20px" }}>
           <div className="form-group">
-            <label>Program Keahlian:</label>
-            <input type="text" placeholder="Masukan Nama Program Keahlian" value={nama} onChange={(e) => setNama(e.target.value)}/>
+            <label>h2:</label>
+            <input type="text" placeholder="Masukan Nama Judul" value={nama} onChange={(e) => setNama(e.target.value)}/>
           </div>
           <div className="form-group">
-            <label>Paragraf 1:</label>
+            <label>h1:</label>
+            <input type="text" placeholder="Masukan Nama Sekolah dengan Huruf Kapital Semua" value={nama} onChange={(e) => setNama(e.target.value)}/>
+          </div>
+          <div className="form-group">
+            <label>p:</label>
             <textarea/>
           </div>
           <div className="form-group">
-            <label>Paragraf 2:</label>
-            <textarea/>
+            <label>Link:</label>
+            <input type="text" placeholder="Masukan Nama Link" value={nama} onChange={(e) => setNama(e.target.value)}/>
           </div>
           <div className="form-group">
             <label>Gambar:</label>

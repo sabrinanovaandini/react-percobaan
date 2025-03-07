@@ -4,14 +4,12 @@ import Tambahberita from "../component/Tambahberita";
 
 export default function AddnewsJur() {
     return(
-    <div className="container">
-        <div className="side">
-            <SideJurnalis />
-        </div>
+    <>
+        <SideJurnalis />
         <div className="content">
             <HeadJurnalis />
             <Tambahberita />
         </div>
-    </div>
+    </>
     )
 }

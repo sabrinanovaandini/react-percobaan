@@ -86,7 +86,9 @@ export default function TabelPPDB() {
           />
         </div>
       </div>
+      
       <Table columns={columns} data={data} />
+
       <PopupDelete
         show={showPopup}
         label="Link Informasi PPDB"

@@ -4,14 +4,12 @@ import TabelBerita from "../component/TabelBerita";
 
 export default function Allnews(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelBerita />
         </div>
-    </div>
+    </>
     )
 }

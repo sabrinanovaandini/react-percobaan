@@ -59,15 +59,13 @@ export default function TabelKomentar() {
       <div className="checkbox-icon">
         <input type="checkbox" />
         <FontAwesomeIcon 
-          icon={faEye} 
-          style={{ color: "green", cursor: "pointer", marginLeft: "10px" }}
-          onClick={() => handleDetailClick(item)}
-        />
-        <FontAwesomeIcon 
-          icon={faTrashCan} 
-          style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
-          onClick={() => handleDeleteClick(item.comentarynews)}
-        />
+        icon={faTrashCan} 
+        style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
+        onClick={(e) => {
+          e.stopPropagation(); // Mencegah event bubbling
+          handleDeleteClick(item.writer);
+        }} 
+      />
       </div>
     ),
   }));
@@ -85,7 +83,7 @@ export default function TabelKomentar() {
           <FontAwesomeIcon icon={faArrowsRotate} style={{ color: "blue", cursor: "pointer" }} />
         </div>
       </div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
       {/* Popup Konfirmasi Hapus */}
       <PopupDelete 

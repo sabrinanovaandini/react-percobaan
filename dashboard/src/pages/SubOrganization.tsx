@@ -4,14 +4,12 @@ import TabelSubOrganisasi from "../component/TabelSubOrganisasi";
 
 export default function SubOrganization(){
     return(
-    <div className="container">
-        <div className="side">
-            <Sidebar />
-        </div>
+    <>
+        <Sidebar />
         <div className="content">
             <Header />
             <TabelSubOrganisasi />
         </div>
-    </div>
+    </>
     )
 }

@@ -76,9 +76,8 @@ button:focus-visible {
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; /* !!! */
   gap: 10px;
-  /* margin: 10px; */
 }
 .logo img {
   position: relative;
@@ -338,8 +337,9 @@ button:focus-visible {
 .popup-detail {
   height: 500px;
   overflow-x: auto;
-  margin: 20px;
+  padding: 20px;
   text-align: justify;
+  box-sizing: border-box;
 }
 
 .img-berita {
@@ -380,10 +380,47 @@ button:focus-visible {
   color: #888;
   margin-bottom: 10px;
 }
+
 .balas-komentar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   margin-top: 20px;
 }
-.balas-komentar textarea{
+
+.balas-komentar textarea {
   width: 100%;
+  min-height: 80px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.balas-komentar button {
+  align-self: flex-end;
+  cursor: pointer;
 }
 /* End Popup detail komentar */
+
+/* Diagram Layout */
+.diagram {
+  border: 1px solid rgba(105, 105, 105, 0.205);
+  box-shadow: 3px 5px 10px -5px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 30px 30px 30px 0;
+  margin-bottom: 30px;
+}
+/* END Diagram Layout */
+
+/* Filters */
+.filters {
+  display: flex;
+  justify-content: end;
+  padding: 0 25px;
+}
+
+.filter-dropdown {
+  width: fit-content;
+}
+/* END Filters */

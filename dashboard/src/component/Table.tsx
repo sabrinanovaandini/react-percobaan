@@ -1,4 +1,4 @@
-export default function Table({ columns, data }) {
+export default function Table({ columns, data, rowClick }) {
   return (
     <>
       <div className="table-container">
@@ -14,7 +14,7 @@ export default function Table({ columns, data }) {
           </thead>
           <tbody>
             {data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
+              <tr key={rowIndex} onClick={() => rowClick(row)}>
                 {columns.map((col, colIndex) => (
                   <td key={colIndex} className={`border ${colIndex === 0 ? 'first-column' : ''}`}>
                     {row[col.key]}

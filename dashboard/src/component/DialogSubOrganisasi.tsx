@@ -1,3 +1,5 @@
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
 export default function DialogSubOrganisasi({ isOpen, onClose, onSubmit }) {
@@ -8,6 +10,10 @@ export default function DialogSubOrganisasi({ isOpen, onClose, onSubmit }) {
   return (
     <div className="popup-overlay">
       <div className="popup-form">
+        <button onClick={onClose} className="btn-close">
+            <FontAwesomeIcon icon={faXmark} size="lg"/>
+        </button>
+            
         <h3>Form Sub Organisasi</h3>
         <form style={{ marginTop: "20px" }}>
           <div className="form-group">
@@ -24,7 +30,7 @@ export default function DialogSubOrganisasi({ isOpen, onClose, onSubmit }) {
           </div>
           <div className="form-group">
             <label>Gambar:</label>
-              <input type="file" />
+            <input type="file"/>
           </div>
           <div className="button-col">
             <button type="button" onClick={onClose}>Batal</button>
