@@ -53,7 +53,6 @@ function App() {
         <Route path="/vmt" element={<VMT />} />
         <Route path="/struktur-organisasi" element={<StructureOrganization />} />
         <Route path="/set-pengguna" element={<Setpengguna />} />
-        
         <Route path="/editnews" element={<Editnews />} />
         {/* bagian jurnalis */}
         <Route path='/dashjurnalis' element={<DashJurnalis />} />

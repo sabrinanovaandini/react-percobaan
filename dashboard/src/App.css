@@ -54,12 +54,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: auto;
-  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
 }
+
+/* closed sidebar */
 .sidebar.closed {
+  position: relative;
   width: 50px;
+  padding: 15px;
 }
+.sidebar.closed ul {
+  padding: 0;
+}
+
+.sidebar.closed li {
+  margin: 5px 0;
+}
+
+.sidebar.closed a , .sidebar.closed .menu-disabled, .dropdown-toggle.disabled{
+  justify-content: center; /* hanya icon di tengah */
+  padding: 15px; /* hilangkan padding horizontal */
+}
+
+.sidebar.closed a span {
+  opacity: 0; /* daripada display none, biar bisa di-transisi */
+  visibility: hidden; /* hide tapi tetap smooth */
+}
+
+.sidebar.closed .dropdown-menu {
+  display: none; /* matikan dropdown saat sidebar ditutup */
+}
+/* END closed sidebar */
 
 .close-icon {
   display: flex;
@@ -78,11 +104,13 @@
   padding: 10px 0;
   margin: 0;
   width: 100%;
+  transition: width 0.3s ease;
 }
 .sidebar li {
   margin: 10px;
+  transition: margin 0.3s ease, opacity 0.3s ease;
 }
-.sidebar a{
+.sidebar a, .menu-disabled, .dropdown-toggle.disabled{
   width: 100%;
   background: none;
   color: #ffffff;
@@ -90,22 +118,38 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
   font-size: 0.8rem;
   cursor: pointer;
   text-align: left;
   box-sizing: border-box;
+  transition: padding 0.3s ease, justify-content 0.3s ease;
 }
+.menu-disabled, .dropdown-toggle.disabled {
+  pointer-events: none;
+}
+/* .sidebar a span {
+  transition: opacity 0.3s ease;
+} */
 .sidebar a:hover {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
 }
-.sidebar a:active,
+.sidebar a.active,
 .sidebar a:focus {
-  background: rgba(0, 0, 0, 0.2); /*try*/
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   outline: none;
 }
+
+.sidebar li.active,
+.sidebar li:focus,
+.sidebar a:hover {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  outline: none;
+}
+
 
 .drop-icon {
   display: flex;
@@ -118,6 +162,22 @@
   display: flex;
   justify-content: center;
   position: relative;
+}
+
+.icon-s.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s;
+}
+/* Responsif */
+
+@media (max-width: 700px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    width: 220px;
+    height: 100vh;
+    overflow-x: auto;
+  }
 }
 /* End Sidebar */
 

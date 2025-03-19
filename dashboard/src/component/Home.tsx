@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <main className="main">
             <div className="first">
-                <Card total={3} title="Highlight Beranda" icon={faBullhorn} link="/highlight" />
+                <Card total={3} title="Highlight Beranda" icon={faBullhorn} link="/highlight-beranda" />
                 <Card total={20} title="Berita" icon={faNewspaper} link="/allnews" />
                 <Card total={15} title="Komentar" icon={faComments} link="/comentary" />
                 <Card total={10} title="Kategori Berita" icon={faListAlt} link="/category" />
