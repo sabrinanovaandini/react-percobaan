@@ -6,7 +6,7 @@ export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      id: 1,
+      idslide: 1,
       title: "Selamat Datang",
       subtitle: "SMK Negeri 2 Magelang",
       text: "Unggul dan Juara",
@@ -16,7 +16,7 @@ export default function Carousel() {
       img: "/backgroundcover.jpg",
     },
     {
-      id: 2,
+      idslide: 2,
       title: "Eksplorasi Program Keahlian",
       subtitle: "SMK Negeri 2 Magelang",
       text: "Cari Minat Program Keahlianmu",
@@ -26,7 +26,7 @@ export default function Carousel() {
       img: "/images1.jpg",
     },
     {
-      id: 3,
+      idslide: 3,
       title: "Bergabung Bersama Kami",
       subtitle: "SMK Negeri 2 Magelang",
       text: "Informasi Pendaftaran",
@@ -60,7 +60,7 @@ export default function Carousel() {
     <div className="carousel">
       {slides.map((slide, index) => (
         <div
-          key={slide.id}
+          key={slide.idslide}
           className={`carousel-item ${index === currentSlide ? "active" : ""}`}
         >
           <img src={slide.img} alt={slide.title} className="carousel-img" />
