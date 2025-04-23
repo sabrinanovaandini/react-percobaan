@@ -1,30 +1,39 @@
-export default function Table({ columns, data, rowClick }) {
+type Column<T> = {
+  key: keyof T | string;
+  label: React.ReactNode;
+};
+
+type TableProps<T = any> = {
+  columns: Column<T>[];
+  data: T[];
+  onRowClick?: (row: T) => void;
+};
+
+export default function Table<T = any>({ columns, data, onRowClick }: TableProps<T>) {
   return (
-    <>
-      <div className="table-container">
-        <table className="table-content">
-          <thead>
-            <tr>
-              {columns.map((col, index) => (
-                <th key={index} className={`border ${index === 0 ? 'first-column' : ''}`}>
-                  {col.label}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex} onClick={() => rowClick(row)}>
-                {columns.map((col, colIndex) => (
-                  <td key={colIndex} className={`border ${colIndex === 0 ? 'first-column' : ''}`}>
-                    {row[col.key]}
-                  </td>
-                ))}
-              </tr>
+  <>
+  <div className="table-container">
+    <table className="table-content">
+      <thead>
+        <tr>
+          {columns.map((col, i) => (
+            <th key={i} className={`border ${i === 0 ? "first-column" : ""}`}>{col.label}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row, i) => (
+          <tr key={i} onClick={() => onRowClick?.(row)} style={{ cursor: onRowClick ? 'pointer' : 'default' }}>
+            {columns.map((col, j) => (
+              <td key={j} className={`border ${j === 0 ? "first-column" : ""}`}>
+                {typeof col.key === "string" ? (row as any)[col.key] : ""}
+              </td>
             ))}
-          </tbody>
-        </table>
-      </div>
-    </>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  </>
   );
 }

@@ -1,23 +1,36 @@
 import { useState } from "react";
 import Table from "./Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEye, faFileExcel, faTrashCan  } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faFileExcel, faTrashCan  } from "@fortawesome/free-solid-svg-icons";
 import PopupDelete from "./PopupDelete";
 import DeletePopup from "./DeletePopup";
 import HighlightPopup from "./HighlightPopup";
 import { faEdit, faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import DialogHighlight from "./DialogHighlight";
 
+// Tipe data untuk setiap row pada tabel
+type Slide = {
+  idslide: number;
+  title: string;
+  subtitle: string;
+  text: string;
+  type: string;
+  target: string;
+  img: string;
+  icon: JSX.Element;
+  onClick: () => void;
+};
+
 export default function TabelHighlight() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedItem, setSelectedItem] = useState({ label: "", value: "" });
   const [showDetailPopup, setShowDetailPopup] = useState(false);
-  const [selectedHighlight, setSelectedHighlight] = useState(null);
+  const [selectedHighlight, setSelectedHighlight] = useState<Slide | null>(null);
   const [showAddPopup, setShowAddPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   // Fungsi untuk membuka popup berdasarkan data yang diklik
-  const handleDeleteClick = (label, value) => {
+  const handleDeleteClick = (label: string, value: any) => {
     setSelectedItem({ label, value });
     setShowPopup(true);
   };
@@ -35,7 +48,7 @@ export default function TabelHighlight() {
   };
 
   // Fungsi untuk membuka popup detail komentar
-  const handleDetailClick = (slide) => {
+  const handleDetailClick = (slide: Slide) => {
     setSelectedHighlight(slide);
     setShowDetailPopup(true);
   };
@@ -56,7 +69,7 @@ export default function TabelHighlight() {
     { label: "Tipe Target Link/Button", key: "type" },
   ];
 
-  // Data asli tanpa elemen JSX langsung
+  
   const rawData = [
     { 
         idslide: 1,
@@ -103,7 +116,7 @@ export default function TabelHighlight() {
         />
         <FontAwesomeIcon 
           icon={faEdit} 
-          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer"  }} 
+          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer" }} 
           onClick={(e) => {
             e.stopPropagation(); // Mencegah event bubbling
             setShowAddPopup(true);
@@ -111,7 +124,11 @@ export default function TabelHighlight() {
         />
       </div>
     ),
-    onClick: () => handleDetailClick(item), // Tambahkan event klik di setiap baris
+    onClick: () => handleDetailClick({
+      ...item,
+      icon: <></>, // atau bisa undefined/null juga karena popup mungkin nggak perlu ini
+      onClick: () => {}, // dummy function
+    }), // Tambahkan event klik di setiap baris
   }));
 
   return (
@@ -144,7 +161,7 @@ export default function TabelHighlight() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table columns={columns} data={data} onRowClick={(row: Slide) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete dengan label dinamis */}
       <PopupDelete 

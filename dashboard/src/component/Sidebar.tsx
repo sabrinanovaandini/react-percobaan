@@ -1,13 +1,12 @@
 import { faAngleDown, faClipboardList, faChevronLeft, faEnvelope, faLink, faSchool, faPeopleGroup, faNewspaper, faChartSimple, faGraduationCap, faUserGear, faBullhorn, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 export default function Sidebar() {
     const [isOpen, setIsOpen] = useState(true);
     const location = useLocation(); // Untuk mendapatkan path saat ini
-    const navigate = useNavigate();
 
     const [openDropdown, setOpenDropdown] = useState(() => {
         // Saat pertama kali dibuka, tentukan dropdown mana yang harus terbuka
@@ -19,7 +18,7 @@ export default function Sidebar() {
     });
 
     // bikin ref global buat item yang aktif
-    const activeItemRef = useRef(null);
+    const activeItemRef = useRef<HTMLLIElement | null>(null);
 
     useEffect(() => {
         if (activeItemRef.current) {
@@ -30,7 +29,7 @@ export default function Sidebar() {
         }
     }, [location.pathname]); // trigger saat pindah halaman
 
-    const toggleDropdown = (menu) => {
+    const toggleDropdown = (menu: string) => {
         setOpenDropdown(openDropdown === menu ? null : menu);
     };
 
@@ -102,7 +101,8 @@ export default function Sidebar() {
                     )}
                 </li>
                 <li>
-                    <Link 
+                    <Link
+                        to="#"
                         onClick={() => toggleDropdown("berita")} 
                         className={`dropdown-toggle ${
                             !isOpen ? "disabled" : ""
@@ -215,7 +215,8 @@ export default function Sidebar() {
                     )}
                 </li>
                 <li>
-                    <Link 
+                    <Link
+                        to="#"
                         onClick={() => toggleDropdown("kesiswaan")} 
                         className={`dropdown-toggle ${
                             !isOpen ? "disabled" : ""
@@ -246,7 +247,8 @@ export default function Sidebar() {
                     )}
                 </li>
                 <li>
-                    <Link 
+                    <Link
+                        to="#"
                         onClick={() => toggleDropdown("info-sekolah")} 
                         className={`dropdown-toggle ${
                             !isOpen ? "disabled" : ""

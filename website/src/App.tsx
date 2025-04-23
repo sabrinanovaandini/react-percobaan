@@ -22,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/ppdb" element={<PPDB />} />
         <Route path="/berita" element={<Berita />} />
         <Route path="/organisasi" element={<Organisasi />} />
@@ -32,7 +32,7 @@ function App() {
         <Route path="/vimitu" element={<Vimitu />} />
         <Route path="/contact" element={<Contact />} />
         {/*  */}
-        <Route path="/" element={<NewsList filteredNews={newsData} />} />
+        <Route path="/newslist" element={<NewsList filteredNews={newsData} />} />
         <Route path="/news/:id" element={<DetailBerita />} />
         <Route path="/pk" element={<CardPK />} />
         <Route path="/detail-pk/:id" element={<DetailPK />} />

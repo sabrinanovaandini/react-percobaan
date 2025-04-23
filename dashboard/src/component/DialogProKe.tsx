@@ -2,8 +2,15 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-export default function DialogProKe({ isOpen, onClose, onSubmit }) {
-  const [nama, setNama] = useState("");
+// Define types for the props
+interface DialogProKeProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (nama: string) => void;
+}
+
+export default function DialogProKe({ isOpen, onClose, onSubmit }: DialogProKeProps) {
+  const [nama, setNama] = useState<string>("");
 
   if (!isOpen) return null;
 

@@ -1,19 +1,19 @@
 import { useState } from "react";
 import Table from "./Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEdit, faEye, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faEdit, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import PopupDelete from "./PopupDelete";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import DialogProKe from "./DialogProKe";
 import DeletePopup from "./DeletePopup";
-import ProkePopup from "./ProkePopup";
+import ProkePopup, { Proke } from "./ProkePopup";
 
 export default function TabelProKe() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProgram, setSelectedProgram] = useState("");
 
   // Fungsi untuk membuka popup dengan program yang akan dihapus
-  const handleDeleteClick = (program) => {
+  const handleDeleteClick = (program: string) => {
     setSelectedProgram(program);
     setShowPopup(true);
   };
@@ -90,18 +90,18 @@ export default function TabelProKe() {
   // Fungsi untuk menutup popup detail
   const closeDetailPopup = () => {
     setShowDetailPopup(false);
-    setSelectedProke(null);
+    setSelectedProke(undefined);
   };
 
   // Fungsi untuk membuka popup detail berita
-  const handleDetailClick = (proke) => {
+  const handleDetailClick = (proke: any) => {
     setSelectedProke(proke);
     setShowDetailPopup(true);
   };
 
   // State untuk PopupDetail
   const [showDetailPopup, setShowDetailPopup] = useState(false);
-  const [selectedProke, setSelectedProke] = useState(null);
+  const [selectedProke, setSelectedProke] = useState<Proke | undefined>(undefined);
 
   return (
     <main className="main">
@@ -132,7 +132,7 @@ export default function TabelProKe() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table columns={columns} data={data} onRowClick={(row) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete untuk modal konfirmasi */}
       <PopupDelete 

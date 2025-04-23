@@ -2,8 +2,15 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
-export default function DialogStrukturOrganisasi({ isOpen, onClose, onSubmit }) {
-  const [nama, setNama] = useState("");
+// Define types for the props
+interface DialogStrukturOrganisasiProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onSubmit: (nama: string) => void;
+}
+
+export default function DialogStrukturOrganisasi({ isOpen, onClose, onSubmit }: DialogStrukturOrganisasiProps) {
+  const [nama, setNama] = useState<string>("");
 
   if (!isOpen) return null;
 

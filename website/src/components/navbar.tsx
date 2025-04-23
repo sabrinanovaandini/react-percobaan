@@ -62,7 +62,7 @@ export default function Navbar() {
                             <input className="search-bar" id="search" type="text" placeholder="Pencarian" />
                         </div>
                     </div>
-                    <Link to="/home" className="navbar-toggle">Beranda</Link>
+                    <Link to="/" className="navbar-toggle">Beranda</Link>
                     <Link to="/ppdb" className="navbar-toggle">PPDB</Link>
                     <Link to="/berita" className="navbar-toggle">Berita</Link>
 

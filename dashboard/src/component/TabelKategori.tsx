@@ -2,7 +2,7 @@ import { useState } from "react";
 import Table from "./Table";
 import PopupDelete from "./PopupDelete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEdit, faEye, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faEdit, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import DialogKategori from "./DialogKategori";
 import DeletePopup from "./DeletePopup";
@@ -17,7 +17,7 @@ export default function TabelKategori() {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   // Fungsi untuk membuka popup konfirmasi hapus
-  const handleDeleteClick = (category) => {
+  const handleDeleteClick = (category: string) => {
     setSelectedCategory(category);
     setShowPopup(true);
   };

@@ -7,17 +7,24 @@ import DialogPpdb from "./DialogPpdb";
 import DeletePopup from "./DeletePopup";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 
+// Define type for the data item
+type PpdbItemType = {
+  url: string;
+  keterangan: string;
+  icon?: JSX.Element; // Optional because it's added later
+};
+
 const columns = [
-  { label: <div className="checkbox-icon"><input type="checkbox"/></div>, key: "icon" },
+  { label: <div className="checkbox-icon"><input type="checkbox" /></div>, key: "icon" },
   { label: "URL", key: "url" },
   { label: "Keterangan", key: "keterangan" },
 ];
 
 export default function TabelPPDB() {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState<PpdbItemType | null>(null); // Set proper type
 
-  const handleDeleteClick = (item) => {
+  const handleDeleteClick = (item: PpdbItemType) => { // Specify type for item
     setSelectedItem(item);
     setShowPopup(true);
   };
@@ -28,11 +35,13 @@ export default function TabelPPDB() {
   };
 
   const confirmDelete = () => {
-    alert(`Data dengan URL \"${selectedItem?.keterangan}\" telah dihapus.`);
-    closePopup();
+    if (selectedItem) {
+      alert(`Data dengan URL "${selectedItem.keterangan}" telah dihapus.`);
+      closePopup();
+    }
   };
 
-  const rawData = [
+  const rawData: PpdbItemType[] = [
     { url: "https://linktr.ee/smkn2mgl", keterangan: "Informasi PPDB 2024 SMKN 2 Magelang" },
     { url: "https://drive.google.com/drive/folders/1S8E0JEPyp1BvaxZkP4WQ0TsXKf_oLCTs?usp=drive_link", keterangan: "Download Dokumen Pendukung PPDB 2024" },
     { url: "https://jateng.siap-ppdb.com/#/", keterangan: "Website PPDB Online Prov Jateng 2024" },
@@ -48,7 +57,11 @@ export default function TabelPPDB() {
           style={{ color: "red", cursor: "pointer", marginLeft: "10px" }}
           onClick={() => handleDeleteClick(item)}
         />
-        <FontAwesomeIcon icon={faEdit} style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer" }} onClick={() => setShowAddPopup(true)} />
+        <FontAwesomeIcon
+          icon={faEdit}
+          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer" }}
+          onClick={() => setShowAddPopup(true)}
+        />
       </div>
     ),
   }));
@@ -92,7 +105,7 @@ export default function TabelPPDB() {
       <PopupDelete
         show={showPopup}
         label="Link Informasi PPDB"
-        value={selectedItem?.keterangan}
+        value={selectedItem?.keterangan || ""}
         onCancel={closePopup}
         onConfirm={confirmDelete}
       />

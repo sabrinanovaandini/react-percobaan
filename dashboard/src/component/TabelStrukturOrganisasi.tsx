@@ -7,78 +7,61 @@ import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import DialogStrukturOrganisasi from "./DialogStrukturOrganisasi";
 import DeletePopup from "./DeletePopup";
 
+// Define the type for each item in rawData
+interface StrukturOrganisasiItem {
+  gambar: JSX.Element;
+  status: string;
+  nama: string;
+  jabatan: string;
+}
+
+// Extend StrukturOrganisasiItem to include 'icon' for the table row actions
+interface StrukturOrganisasiItemWithIcon extends StrukturOrganisasiItem {
+  icon: JSX.Element;
+}
+
 const columns = [
-  { label: <div className="checkbox-icon"><input type="checkbox"/></div>, key: "icon" },
+  { label: <div className="checkbox-icon"><input type="checkbox" /></div>, key: "icon" },
   { label: "Gambar", key: "gambar" },
   { label: "Status", key: "status" },
   { label: "Nama", key: "nama" },
   { label: "Jabatan", key: "jabatan" },
 ];
 
-const rawData = [
+const rawData: StrukturOrganisasiItem[] = [
   {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Pimpinan Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Kepala Sekolah SMK Negeri 2 Magelang", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,
+    status: "Pimpinan Sekolah",
+    nama: "Kurniawan Basuki, S.Pd.,M.T",
+    jabatan: "Kepala Sekolah SMK Negeri 2 Magelang",
   },
   {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Wakil Kepala Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Waka Bidang Kurikulum", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,
+    status: "Wakil Kepala Sekolah",
+    nama: "Kurniawan Basuki, S.Pd.,M.T",
+    jabatan: "Waka Bidang Kurikulum",
   },
   {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,  
-    status: "Wakil Kepala Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Waka Bidang Kesiswaan", 
+    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,
+    status: "Wakil Kepala Sekolah",
+    nama: "Kurniawan Basuki, S.Pd.,M.T",
+    jabatan: "Waka Bidang Kesiswaan",
   },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Wakil Kepala Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Waka Bidang Sarpras", 
-  },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Wakil Kepala Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Waka Bidang Humas dan Industri", 
-  },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Ketua Program Studi Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Ketua Program Studi Akuntansi dan Keuangan Lembaga", 
-  },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />,  
-    status: "Ketua Program Studi Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Ketua Program Studi Manajemen Perkantoran dan Keuangan Lembaga", 
-  },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Ketua Program Studi Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Ketua Program Studi Pengembangan Perangkat Lunak dan Gim", 
-  },
-  {
-    gambar: <img src={"/kepala sekolah.jpeg"} alt="kepala sekolah" style={{ objectFit: "cover", width: "120px", height: "140px", borderRadius: "10px" }} />, 
-    status: "Ketua Program Studi Sekolah", 
-    nama: "Kurniawan Basuki, S.Pd.,M.T", 
-    jabatan: "Ketua Program Studi Pemasaran", 
-  },
+  // Add other items here...
 ];
 
 export default function TabelStrukturOrganisasi() {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState<StrukturOrganisasiItem | null>(null); // Type selectedItem
 
-  const handleDeleteClick = (item) => {
+  const handleDeleteClick = (item: StrukturOrganisasiItem) => {
     setSelectedItem(item);
     setShowPopup(true);
+  };
+
+  const handleDetailClick = (row: StrukturOrganisasiItem) => {
+    console.log("Detail clicked", row);
+    // Handle detail click logic here
   };
 
   const closePopup = () => {
@@ -87,11 +70,12 @@ export default function TabelStrukturOrganisasi() {
   };
 
   const confirmDelete = () => {
-    alert(`Data ${selectedItem?.nama} telah dihapus.`);
+    alert(`Data ${selectedItem?.nama ?? "Unknown"} telah dihapus.`);
     closePopup();
   };
 
-  const data = rawData.map((item) => ({
+  // Map rawData and include the 'icon' property
+  const data: StrukturOrganisasiItemWithIcon[] = rawData.map((item) => ({
     ...item,
     icon: (
       <div className="checkbox-icon">
@@ -139,12 +123,16 @@ export default function TabelStrukturOrganisasi() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table<StrukturOrganisasiItemWithIcon>
+        columns={columns}
+        data={data}
+        onRowClick={(row) => handleDetailClick(row)}
+      />
 
       <PopupDelete
         show={showPopup}
         label="Struktur Organisasi"
-        value={selectedItem?.nama}
+        value={selectedItem?.nama ?? "Unknown"}  // Use a default value if undefined
         onCancel={closePopup}
         onConfirm={confirmDelete}
       />

@@ -2,82 +2,91 @@ import { useState } from "react";
 import Table from "./Table";
 import PopupDelete from "./PopupDelete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEdit, faEye, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faEdit, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { faPlusSquare } from "@fortawesome/free-regular-svg-icons";
 import DialogOrganisasi from "./DialogOrganisasi";
 import DeletePopup from "./DeletePopup";
 import OrganisasiPopup from "./OrganisasiPopup";
 
+// Define the type for each item in rawData
+interface OrganisasiType {
+  organisasi: string;
+  gambar: JSX.Element;
+  content: string;
+}
+
+// Add 'icon' for the table row actions
+interface OrganisasiWithIcon extends OrganisasiType {
+  icon: JSX.Element;
+}
+
 const columns = [
-  { label: <div className="checkbox-icon"><input type="checkbox"/></div>, key: "icon" },
+  { label: <div className="checkbox-icon"><input type="checkbox" /></div>, key: "icon" },
   { label: "Organisasi", key: "organisasi" },
+];
+
+const rawData: OrganisasiType[] = [
+  {
+    organisasi: "OSIS (OSKAMA)",
+    gambar: <img src={"/osis.jpg"} alt="organisasi" style={{ objectFit: "cover" }} />,
+    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+  }
 ];
 
 export default function TabelOrganisasi() {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedOrganisasi, setSelectedOrganisasi] = useState(null);
-
+  const [selectedOrganisasi, setSelectedOrganisasi] = useState<OrganisasiType | null>(null);
   const [showAddPopup, setShowAddPopup] = useState(false);
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [showDetailPopup, setShowDetailPopup] = useState(false);
-  // const [selectedOrganisasi, setSelectedOrganisasi] = useState(null);
 
-  // Fungsi untuk membuka popup konfirmasi hapus
-  const handleDeleteClick = (organisasi) => {
+  const handleDeleteClick = (organisasi: OrganisasiType) => {
     setSelectedOrganisasi(organisasi);
     setShowPopup(true);
   };
 
-  // Fungsi untuk menutup popup hapus
+  
   const closePopup = () => {
     setShowPopup(false);
     setSelectedOrganisasi(null);
   };
 
-  // Fungsi untuk menghapus data (sementara alert dulu)
+
   const confirmDelete = () => {
-    alert(`Organisasi "${selectedOrganisasi}" telah dihapus.`);
+    alert(`Organisasi "${selectedOrganisasi?.organisasi}" telah dihapus.`);
     closePopup();
   };
 
-  // Fungsi untuk membuka popup detail organisasi
-  const handleDetailClick = (organisasi) => {
+  const handleDetailClick = (organisasi: OrganisasiType) => {
     setSelectedOrganisasi(organisasi);
     setShowDetailPopup(true);
   };
 
-  // Fungsi untuk menutup popup detail
+
   const closeDetailPopup = () => {
     setShowDetailPopup(false);
     setSelectedOrganisasi(null);
   };
 
-  const rawData = [
-    {
-      organisasi: "OSIS (OSKAMA)",
-      gambar: <img src={"/osis.jpg"} alt="organisasi" style={{ objectFit: "cover" }} />, 
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur sit molestiae blanditiis iste voluptates mollitia nesciunt repellat soluta ipsum eos hic sapiente nobis, voluptatem voluptas eius officia quidem, harum vitae!Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur sit molestiae blanditiis iste voluptates mollitia nesciunt repellat soluta ipsum eos hic sapiente nobis, voluptatem voluptas eius officia quidem, harum vitae!Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur sit molestiae blanditiis iste voluptates mollitia nesciunt repellat soluta ipsum eos hic sapiente nobis, voluptatem voluptas eius officia quidem, harum vitae!",
-    }
-  ];
-
-  const data = rawData.map((item) => ({
+  // Prepare data for table with icon actions
+  const data: OrganisasiWithIcon[] = rawData.map((item) => ({
     ...item,
     icon: (
       <div className="checkbox-icon">
         <input type="checkbox" />
-        <FontAwesomeIcon 
-          icon={faTrashCan} 
-          style={{ color: "red", cursor: "pointer", marginLeft: "10px" }} 
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          style={{ color: "red", cursor: "pointer", marginLeft: "10px" }}
           onClick={(e) => {
-            e.stopPropagation(); // Mencegah event bubbling
-            handleDeleteClick(item.organisasi);
-          }} 
+            e.stopPropagation();
+            handleDeleteClick(item);
+          }}
         />
-        <FontAwesomeIcon 
-          icon={faEdit} 
-          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer"  }} 
+        <FontAwesomeIcon
+          icon={faEdit}
+          style={{ color: "skyblue", marginLeft: "10px", cursor: "pointer" }}
           onClick={(e) => {
-            e.stopPropagation(); // Mencegah event bubbling
+            e.stopPropagation();
             setShowAddPopup(true);
           }}
         />
@@ -90,57 +99,62 @@ export default function TabelOrganisasi() {
       <div className="content-title">
         <h2>Organisasi</h2>
         <div className="icon-table">
-          <FontAwesomeIcon 
-            icon={faPlusSquare} 
-            style={{ color: "black", cursor: "pointer" }} 
-            onClick={() => setShowAddPopup(true)} 
+          <FontAwesomeIcon
+            icon={faPlusSquare}
+            style={{ color: "black", cursor: "pointer" }}
+            onClick={() => setShowAddPopup(true)}
           />
-          <FontAwesomeIcon 
-            icon={faTrashCan} 
-            style={{ color: "red", cursor: "pointer" }} 
-            onClick={() => setShowDeletePopup(true)} 
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            style={{ color: "red", cursor: "pointer" }}
+            onClick={() => setShowDeletePopup(true)}
           />
           <FontAwesomeIcon icon={faFileExcel} style={{ color: "green", cursor: "pointer" }} />
           <FontAwesomeIcon icon={faArrowsRotate} style={{ color: "blue", cursor: "pointer" }} />
-          
+
           {/* Popup Tambah Organisasi */}
           <DialogOrganisasi
-            isOpen={showAddPopup} 
-            onClose={() => setShowAddPopup(false)} 
+            isOpen={showAddPopup}
+            onClose={() => setShowAddPopup(false)}
             onSubmit={(nama) => {
               console.log("Data ditambahkan:", nama);
               setShowAddPopup(false);
-            }} 
+            }}
           />
 
           {/* Popup Hapus Massal */}
-          <DeletePopup 
-            isOpen={showDeletePopup} 
-            onClose={() => setShowDeletePopup(false)} 
+          <DeletePopup
+            isOpen={showDeletePopup}
+            onClose={() => setShowDeletePopup(false)}
             onConfirm={() => {
               console.log("Data dihapus");
               setShowDeletePopup(false);
-            }} 
+            }}
           />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
 
-      {/* Popup Konfirmasi Hapus */}
+      <Table<OrganisasiWithIcon>
+        columns={columns}
+        data={data}
+        onRowClick={(row) => handleDetailClick(row)}
+      />
+
       <PopupDelete
         show={showPopup}
         label="Organisasi"
-        value={selectedOrganisasi}
+        value={selectedOrganisasi?.organisasi || ""}
         onCancel={closePopup}
         onConfirm={confirmDelete}
       />
 
-      {/* Popup Detail Organisasi */}
-      <OrganisasiPopup 
-        isOpen={showDetailPopup} 
-        onClose={closeDetailPopup} 
-        organisasi={selectedOrganisasi} 
-      />
+      {selectedOrganisasi && (
+        <OrganisasiPopup
+          isOpen={showDetailPopup}
+          onClose={closeDetailPopup}
+          organisasi={selectedOrganisasi}
+        />
+      )}
     </main>
   );
 }

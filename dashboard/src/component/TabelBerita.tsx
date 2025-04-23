@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Table from "./Table";
-import { faArrowsRotate, faEdit, faEye, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faEdit, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import PopupDelete from "./PopupDelete";
@@ -13,7 +13,7 @@ export default function TabelBerita() {
   const [selectedTitle, setSelectedTitle] = useState("");
 
   // Fungsi untuk membuka popup dengan judul berita yang akan dihapus
-  const handleDeleteClick = (title) => {
+  const handleDeleteClick = (title: string) => {
     setSelectedTitle(title);
     setShowPopup(true);
   };
@@ -96,7 +96,7 @@ export default function TabelBerita() {
   };
 
   // Fungsi untuk membuka popup detail berita
-  const handleDetailClick = (news) => {
+  const handleDetailClick = (news: any) => {
     setSelectedNews(news);
     setShowDetailPopup(true);
   };
@@ -120,7 +120,11 @@ export default function TabelBerita() {
           </Link>
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table 
+        columns={columns} 
+        data={data} 
+        onRowClick={(row: typeof data[0]) => handleDetailClick(row)} 
+      />
 
       {/* Gunakan PopupDelete (berita tertentu) untuk modal konfirmasi */}
       <PopupDelete 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import Table from "./Table";
 import PopupDelete from "./PopupDelete";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEye, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faFileExcel, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import DeletePopup from "./DeletePopup";
 import KomentarPopup from "./KomentarPopup";
 
@@ -20,7 +20,7 @@ export default function TabelKomentar() {
   const [selectedComment, setSelectedComment] = useState(null);
 
   // Fungsi untuk membuka popup konfirmasi hapus
-  const handleDeleteClick = (comentarynews) => {
+  const handleDeleteClick = (comentarynews: string) => {
     setSelectedComentary(comentarynews);
     setShowPopup(true);
   };
@@ -38,7 +38,7 @@ export default function TabelKomentar() {
   };
 
   // Fungsi untuk membuka popup detail komentar
-  const handleDetailClick = (comment) => {
+  const handleDetailClick = (comment:any) => {
     setSelectedComment(comment);
     setShowDetailPopup(true);
   };
@@ -83,7 +83,7 @@ export default function TabelKomentar() {
           <FontAwesomeIcon icon={faArrowsRotate} style={{ color: "blue", cursor: "pointer" }} />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table columns={columns} data={data} onRowClick={(row) => handleDetailClick(row)} />
 
       {/* Popup Konfirmasi Hapus */}
       <PopupDelete 

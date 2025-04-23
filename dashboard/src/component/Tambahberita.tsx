@@ -5,6 +5,34 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+interface DropdownProps {
+    options: string[];
+    selected: string;
+    onSelect: (value: string) => void;
+}
+
+function Dropdown({ options, selected, onSelect }: DropdownProps) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="custom-dropdown" onClick={() => setIsOpen(!isOpen)}>
+            <div className="dropdown-selected">
+                {selected}
+                <FontAwesomeIcon icon={faChevronDown} className={`dropdown-icon ${isOpen ? "open" : ""}`} />
+            </div>
+            {isOpen && (
+                <ul className="dropdown-options">
+                    {options.map((option: string, index: number) => (
+                        <li key={index} onClick={() => { onSelect(option); setIsOpen(false); }}>
+                            {option}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+}
+
 export default function Tambahberita() {
     const [isi, setIsi] = useState("");
     const [status, setStatus] = useState("Diterbitkan");
@@ -100,27 +128,5 @@ export default function Tambahberita() {
                 </div>
             </div>
         </main>
-    );
-}
-
-function Dropdown({ options, selected, onSelect }) {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-        <div className="custom-dropdown" onClick={() => setIsOpen(!isOpen)}>
-            <div className="dropdown-selected">
-                {selected}
-                <FontAwesomeIcon icon={faChevronDown} className={`dropdown-icon ${isOpen ? "open" : ""}`} />
-            </div>
-            {isOpen && (
-                <ul className="dropdown-options">
-                    {options.map((option, index) => (
-                        <li key={index} onClick={() => { onSelect(option); setIsOpen(false); }}>
-                            {option}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
     );
 }

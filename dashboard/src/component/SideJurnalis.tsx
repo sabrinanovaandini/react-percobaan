@@ -4,10 +4,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function SideJurnalis() {
+    // Menambahkan tipe string | null pada state openDropdown
     const [isOpen, setIsOpen] = useState(true);
-    const [openDropdown, setOpenDropdown] = useState(null);
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-    const toggleDropdown = (menu) => {
+    // Menambahkan tipe string pada parameter menu
+    const toggleDropdown = (menu: string) => {
         setOpenDropdown(openDropdown === menu ? null : menu);
     };
 
@@ -17,7 +19,7 @@ export default function SideJurnalis() {
                 <img src="public/logo smea.PNG" alt="logo smkn2mgl" />
                 {isOpen && <p>SMKN 2 MAGELANG</p>}
                 <div className="close-icon" onClick={() => setIsOpen(!isOpen)}>
-                    <FontAwesomeIcon icon={faChevronLeft} size="lg" style={{ color: "white" }}/>
+                    <FontAwesomeIcon icon={faChevronLeft} size="lg" style={{ color: "white" }} />
                 </div>
             </div>
             <ul>
@@ -32,7 +34,7 @@ export default function SideJurnalis() {
                     </Link>
                 </li>
                 <li>
-                    <Link onClick={() => toggleDropdown("berita")}>
+                    <Link to="#" onClick={() => toggleDropdown("berita")}>
                         <div className="drop-icon">
                             <div className="icon-s">
                                 <FontAwesomeIcon icon={faHome} />

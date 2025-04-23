@@ -21,7 +21,7 @@ export default function UserJurnalis() {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/login">
+                                <Link to="/">
                                     <FontAwesomeIcon icon={faRightFromBracket} />
                                     <span>Log out</span>
                                 </Link>

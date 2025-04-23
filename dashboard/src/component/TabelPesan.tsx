@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Table from "./Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate, faEye, faFileExcel, faTrashCan  } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faFileExcel, faTrashCan  } from "@fortawesome/free-solid-svg-icons";
 import PopupDelete from "./PopupDelete";
 import DeletePopup from "./DeletePopup";
 import PesanPopup from "./PesanPopup";
@@ -13,7 +13,7 @@ export default function TabelPesan() {
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   // Fungsi untuk membuka popup berdasarkan data yang diklik
-  const handleDeleteClick = (label, value) => {
+  const handleDeleteClick = (label: string, value: string) => {
     setSelectedItem({ label, value });
     setShowPopup(true);
   };
@@ -31,7 +31,7 @@ export default function TabelPesan() {
   };
 
   // Fungsi untuk membuka popup detail komentar
-  const handleDetailClick = (message) => {
+  const handleDetailClick = (message: any) => {
     setSelectedMessage(message);
     setShowDetailPopup(true);
   };
@@ -96,7 +96,7 @@ export default function TabelPesan() {
           />
         </div>
       </div>
-      <Table columns={columns} data={data} rowClick={(row) => handleDetailClick(row)} />
+      <Table columns={columns} data={data} onRowClick={(row) => handleDetailClick(row)} />
 
       {/* Gunakan PopupDelete dengan label dinamis */}
       <PopupDelete 

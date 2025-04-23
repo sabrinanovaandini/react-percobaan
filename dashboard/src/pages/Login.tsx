@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Login(){
     return(
     <div className="login">
@@ -26,10 +28,11 @@ export default function Login(){
                     </svg>
                 </span>
             </div>
-            <button className="submit" type="submit">
-                Masuk
-            </button>
-
+            <Link to="/dashboard" style={{ textDecoration: 'none' }}>
+                <button className="submit" type="submit">
+                        <span style={{ color: 'white' }}>Masuk</span>
+                </button>
+            </Link>
             <p className="signup-link">
                 <a href="">Lupa password ?</a>
             </p>

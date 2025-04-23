@@ -1,16 +1,40 @@
 import { useState } from "react";
 
-export default function FormEdit({ fields, title, onSubmit }) {
-  const [formData, setFormData] = useState(
-    fields.reduce((acc, field) => ({ ...acc, [field.key]: field.default || "" }), {})
+// Define types for the field object
+export interface Field {
+  key: string;
+  label: string;
+  type: "text" | "textarea" | "select" | "radio" | "file" | "email" | "password";
+  default?: string;
+  options?: { value: string; label: string }[];
+  rows?: number;
+}
+
+
+// Define the props for the FormEdit component
+interface FormEditProps {
+  fields: Field[];
+  title: string;
+  onSubmit: (formData: Record<string, string | File>) => void; // Function that handles form submission
+}
+
+export default function FormEdit({ fields, title, onSubmit }: FormEditProps) {
+  const [formData, setFormData] = useState<Record<string, string | File>>(
+    fields.reduce(
+      (acc, field) => ({ ...acc, [field.key]: field.default || "" }),
+      {}
+    )
   );
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, type, value, files } = e.target;
-    
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, type, value } = e.target;
+
     if (type === "file") {
-      setFormData({ ...formData, [name]: files[0] }); // Simpan file pertama yang dipilih
+      const target = e.target as HTMLInputElement; // Narrow the type to HTMLInputElement
+      if (target.files) {
+        setFormData({ ...formData, [name]: target.files[0] }); // Access the file property safely
+      }
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -20,7 +44,7 @@ export default function FormEdit({ fields, title, onSubmit }) {
     setIsEditing(!isEditing);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsEditing(false);
     onSubmit(formData);
@@ -38,20 +62,22 @@ export default function FormEdit({ fields, title, onSubmit }) {
             {field.type === "textarea" ? (
               <textarea
                 name={field.key}
-                value={formData[field.key]}
+                value={formData[field.key] as string}
                 onChange={handleChange}
                 disabled={!isEditing}
-                rows={field.rows || 3} // Bisa atur jumlah baris textarea
+                rows={field.rows || 3}
               />
             ) : field.type === "select" ? (
-              <select name={field.key} value={formData[field.key]} onChange={handleChange} disabled={!isEditing}>
-                {field.options.map((option, index) => (
-                  <option key={index} value={option.value}>{option.label}</option>
+              <select name={field.key} value={formData[field.key] as string} onChange={handleChange} disabled={!isEditing}>
+                {field.options?.map((option, index) => (
+                  <option key={index} value={option.value}>
+                    {option.label}
+                  </option>
                 ))}
               </select>
             ) : field.type === "radio" ? (
               <div className="radio-group">
-                {field.options.map((option, index) => (
+                {field.options?.map((option, index) => (
                   <label key={index} className="radio-label">
                     <input
                       type="radio"
@@ -71,7 +97,7 @@ export default function FormEdit({ fields, title, onSubmit }) {
               <input
                 type={field.type || "text"}
                 name={field.key}
-                value={formData[field.key]}
+                value={formData[field.key] as string}
                 onChange={handleChange}
                 disabled={!isEditing}
               />
